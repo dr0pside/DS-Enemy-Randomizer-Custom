@@ -1257,20 +1257,7 @@ namedata = self.msbio.parts[2].rows[i][NAME_DATA_COL][:5]
 
  for i in range(len(refMsb.parts[2].rows)):
             if (i < rowCount):
-                if namedata in TARGETNAMES:
-                    self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL]
-                    self.msbio.parts[2].rows[i][NPCAI_DATA_COL] = refMsb.parts[2].rows[i][NPCAI_DATA_COL]
-                    self.msbio.parts[2].rows[i][PARAM_DATA_COL] = refMsb.parts[2].rows[i][PARAM_DATA_COL]
-                    self.msbio.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL] = refMsb.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL]
-                    self.msbio.parts[2].rows[i][ANIMID_DATA_COL] = refMsb.parts[2].rows[i][ANIMID_DATA_COL]
-
-                    self.msbio.parts[2].rows[i][POS_DATA_COL] = refMsb.parts[2].rows[i][POS_DATA_COL]
-                    self.msbio.parts[2].rows[i][POS_DATA_COL + 1] = refMsb.parts[2].rows[i][POS_DATA_COL + 1]
-                    self.msbio.parts[2].rows[i][POS_DATA_COL + 2] = refMsb.parts[2].rows[i][POS_DATA_COL + 2]
-                    self.msbio.parts[2].rows[i][POS_DATA_COL + 3] = refMsb.parts[2].rows[i][POS_DATA_COL + 3]
-                    self.msbio.parts[2].rows[i][POS_DATA_COL + 4] = refMsb.parts[2].rows[i][POS_DATA_COL + 4]
-                    self.msbio.parts[2].rows[i][POS_DATA_COL + 5] = refMsb.parts[2].rows[i][POS_DATA_COL + 5]
-                else:
+                if (self.isValid(self.msbio.parts[2].rows[i][NAME_DATA_COL][:5])):
                     self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL] + MODEL_INDEX_DIFF
                     self.msbio.parts[2].rows[i][NPCAI_DATA_COL] = refMsb.parts[2].rows[i][NPCAI_DATA_COL]
                     self.msbio.parts[2].rows[i][PARAM_DATA_COL] = refMsb.parts[2].rows[i][PARAM_DATA_COL]
@@ -1283,7 +1270,8 @@ namedata = self.msbio.parts[2].rows[i][NAME_DATA_COL][:5]
                     self.msbio.parts[2].rows[i][POS_DATA_COL + 3] = refMsb.parts[2].rows[i][POS_DATA_COL + 3]
                     self.msbio.parts[2].rows[i][POS_DATA_COL + 4] = refMsb.parts[2].rows[i][POS_DATA_COL + 4]
                     self.msbio.parts[2].rows[i][POS_DATA_COL + 5] = refMsb.parts[2].rows[i][POS_DATA_COL + 5]
-
+            else:
+                self.msbio.AddCreatureRow(refMsb.parts[2].rows[i][:])
 
         for i in range(len(refMsb.parts[2].rows)):
             if (i >= rowCount):
