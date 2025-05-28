@@ -144,8 +144,6 @@ class MainWindow():
         self.randomizerVersion = "v0.4.1.2"
         self.root.title("Dark Souls - Enemy randomizer " + self.randomizerVersion + " by rycheNhavalys")
 
-        self.root.iconbitmap(default=resource_path('favicon.ico'))
-
         self.randomizer = Randomizer()
 
         self.settingsTabs = Notebook(self.root)
