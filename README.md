@@ -2,12 +2,11 @@
 
 Update of the original DS1 Enemy Randomizer to change some things and overall make it harder:
 
-# BUGS FIXED:
+BUGS FIXED:
 - No more Seath or Kalameet in Nito's arena (Seath gets stuck in the ceiling and is unkillable, Kalameet is just extremely unfun and RNG-heavy as he can one-shot you through the pillar and you have the skeletons coming after you)
 - Sentinels now all spawn with regular aggressive AI
-- Correct models for all enemies in Darkroot Garden/Basin
 
-# BALANCE CHANGES:
+BALANCE CHANGES:
 - Only lava-proof enemies/bosses can spawn in the lava in Demon Ruins and Lost Izalith (basically you will have demonic statues everywhere but you won't get random free souls anymore)
 - Only lava-proof bosses can spawn in the Centipede Demon arena (so him, Quelaag or Taurus Demon)
 - Black Knight ghosts in the Kiln don't get replaced anymore (it was basically an infinite souls glitch)
