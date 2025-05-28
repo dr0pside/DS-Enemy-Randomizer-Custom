@@ -1278,6 +1278,8 @@ class Randomizer:
         for i in range(len(refMsb.parts[2].rows)):
             if self.msbio.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL] in EVENTID:
                 self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL]
+            else:
+                self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL] + MODEL_INDEX_DIFF
         
         self.msbio.save(self.MAPSTUDIO + "m12_00_00_01.msb")
     def randomize(self, settings, msgArea):
