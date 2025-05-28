@@ -1276,7 +1276,7 @@ class Randomizer:
 
         EVENTID = {1200801, 1200400, 1200000, 1200001, 1200600, 1200602, 1200250, 1200251, 1200252, 1200253, 1200010, 1200800, 1200350}
         for i in range(len(refMsb.parts[2].rows)):
-            if self.msbio.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL] in TARGETNAMES:
+            if self.msbio.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL] in EVENTID:
                 self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL] - MODEL_INDEX_DIFF
         
         self.msbio.save(self.MAPSTUDIO + "m12_00_00_01.msb")
