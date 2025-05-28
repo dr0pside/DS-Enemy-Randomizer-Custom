@@ -1303,7 +1303,7 @@ class Randomizer:
 
             # Generate a seed if none is provided.
             if (seed == ""):
-                random.seed(datetime.datetime.now())
+                random.seed(time.time())
                 seed = str(random.randrange(sys.maxsize))
             
             random.seed(seed)
