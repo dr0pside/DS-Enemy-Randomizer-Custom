@@ -217,7 +217,7 @@ class NpcParam(ParamClass):
         expectedIndex = 0
         for i in range(entryCount):
             if (expectedIndex < len(self.BossSouls)):
-                if (self.param.Rows[i].id == self.BossSouls[expectedIndex][0] + 50):
+                if (self.param.Rows[i].id == self.BossSouls[expectedIndex][0] + 25):
                     newSouls = (int)(self.BossSouls[expectedIndex][1] * (soulPercentage / 100.0))
                     self.data[i]['normal']['getSoul'] = newSouls
                     expectedIndex += 1
