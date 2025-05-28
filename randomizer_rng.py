@@ -1251,11 +1251,10 @@ class Randomizer:
         MODEL_INDEX_DIFF = 2
 
         rowCount = len(self.msbio.parts[2].rows)
-
-        TARGETNAMES = ['c3230', 'c3300', 'c3350', 'c3370', 'c3410', 'c3530', 'c5210', 'c5360'] #Enemy refs that do not need a model_index_diff
-        namedata = self.msbio.parts[2].rows[i][NAME_DATA_COL][:5]
-
+        
         for i in range(len(refMsb.parts[2].rows)):
+            TARGETNAMES = ['c3230', 'c3300', 'c3350', 'c3370', 'c3410', 'c3530', 'c5210', 'c5360'] #Enemy refs that do not need a model_index_diff
+            namedata = self.msbio.parts[2].rows[i][NAME_DATA_COL][:5]
             if (i < rowCount):
                 if namedata in TARGETNAMES:
                     self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL]
