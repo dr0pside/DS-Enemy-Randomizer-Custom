@@ -141,8 +141,8 @@ class MainWindow():
 
     def __init__(self):
         self.root = Tk()
-        self.randomizerVersion = "v0.4.1.2"
-        self.root.title("Dark Souls - Enemy randomizer " + self.randomizerVersion + " by rycheNhavalys")
+        self.randomizerVersion = "v0.4.2"
+        self.root.title("Dark Souls - Enemy randomizer " + self.randomizerVersion + " by rycheNhavalys, updated by AdiO")
 
         self.randomizer = Randomizer()
 
