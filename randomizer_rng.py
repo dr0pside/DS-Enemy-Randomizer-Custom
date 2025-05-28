@@ -1497,10 +1497,11 @@ class Randomizer:
                         specialCase = True
                     elif ("c3300" in creatureId and inFile == "m13_02_00_00"):          #Crystal Lizards in Great Hollow, for whatever reason they make the Great Hollow super unstable
                         specialCase = True
-
                     if ("c2900" in creatureId and inFile == "m13_01_00_00"):            # don't replace small skeletons in ToG (Ravelord Nito fight)
                         specialCase = True
                     if (("c2910_0019" in creatureId or "c2910_0020" in creatureId or "c2910_0021" in creatureId) and inFile == "m13_01_00_00"):    # don't replace large skeletons in Ravelord Nito fight
+                        specialCase = True
+                    if (("c2250_0003" in creatureId or "c2250_0004" in creatureId or "c2250_0005" in creatureId or "c2250_0006" in creatureId or "c2250_0007" in creatureId or "c2250_0008" in creatureId or "c2250_0009" in creatureId) and inFile == "m14_01_00_00"):    # don't replace taurus in lava
                         specialCase = True
 
                     if (disableRespawningMosquitoes):
