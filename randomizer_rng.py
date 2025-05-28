@@ -1250,7 +1250,7 @@ class Randomizer:
 
         MODEL_INDEX_DIFF = 2
 
-        TARGET_NAMES = {"c3230", "c3300", "c3350", "c3370", "c3410", "c3530", "c5210", "c5360"} #Enemy refs that do not need a model_index_diff
+        TARGET_NAMES = ['c3230', 'c3300', 'c3350', 'c3370', 'c3410', 'c3530', 'c5210', 'c5360'] #Enemy refs that do not need a model_index_diff
 
         rowCount = len(self.msbio.parts[2].rows)
 
@@ -1270,7 +1270,6 @@ class Randomizer:
                     self.msbio.parts[2].rows[i][POS_DATA_COL + 3] = refMsb.parts[2].rows[i][POS_DATA_COL + 3]
                     self.msbio.parts[2].rows[i][POS_DATA_COL + 4] = refMsb.parts[2].rows[i][POS_DATA_COL + 4]
                     self.msbio.parts[2].rows[i][POS_DATA_COL + 5] = refMsb.parts[2].rows[i][POS_DATA_COL + 5]
-                    
                 else:
                     self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL] + MODEL_INDEX_DIFF
                     self.msbio.parts[2].rows[i][NPCAI_DATA_COL] = refMsb.parts[2].rows[i][NPCAI_DATA_COL]
