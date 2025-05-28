@@ -1182,15 +1182,15 @@ class Randomizer:
         tauruslist = ['c2250_0003', 'c2250_0004', 'c2250_0005', 'c2250_0006', 'c2250_0007', 'c2250_0008', 'c2250_0009']
         lavademonslist = ['c5200', 'c5280', 'c2430', 'c2250', 'c3421']
         
-        if (tauruslist in oldID):
-            if (lavademonslist not in newID):
+        if (oldID in tauruslist):
+            if (newID not in lavademonslist):
                 return True
 
         if ('c5200' in oldID):
-            if (lavademonslist not in newID):
+            if (newID not in lavademonslist):
                 return True
         if ('c3421' in oldID):
-            if (lavademonslist not in newID):
+            if (newID not in lavademonslist):
                 return True
                 
         if (self.easyAsylum):
