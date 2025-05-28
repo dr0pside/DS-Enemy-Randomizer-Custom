@@ -1275,10 +1275,10 @@ class Randomizer:
                 self.msbio.parts[2].rows[i][PARTSIDX_DATA_COL] = refMsb.parts[2].rows[i][PARTSIDX_DATA_COL]
 
         TARGETNAMES = ['c3230', 'c3300', 'c3350', 'c3370', 'c3410', 'c3530', 'c5210', 'c5360']
-        
-        if self.msbio.parts[2].rows[NAME_DATA_COL][:5] in TARGETNAMES:                #fix broken model changes
-            self.msbio.parts[2].rows[MODEL_DATA_COL] = self.msbio.parts[2].rows[MODEL_DATA_COL] - MODEL_INDEX_DIFF
 
+        if self.msbio.rows[NAME_DATA_COL][:5] in TARGETNAMES:
+            self.msbio.rows[MODEL_DATA_COL] = self.msbio.rows[MODEL_DATA_COL] - MODEL_INDEX_DIFF
+        
         self.msbio.save(self.MAPSTUDIO + "m12_00_00_01.msb")
     def randomize(self, settings, msgArea):
         """
