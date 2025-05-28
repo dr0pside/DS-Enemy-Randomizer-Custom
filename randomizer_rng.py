@@ -1178,7 +1178,21 @@ class Randomizer:
 
         if ('c2791' in oldID):          # Black Knight ghosts from the Kiln (if replaced then the new enemies just die)
                 return True
+            
+        tauruslist = ['c2250_0003', 'c2250_0004', 'c2250_0005', 'c2250_0006', 'c2250_0007', 'c2250_0008', 'c2250_0009']
+        lavademonslist = ['c5200', 'c5280', 'c2430', 'c2250', 'c3421']
         
+        if (tauruslist in oldID):
+            if (lavademonslist not in newID):
+                return True
+
+        if ('c5200' in oldID):
+            if (lavademonslist not in newID):
+                return True
+        if ('c3421' in oldID):
+            if (lavademonslist not in newID):
+                return True
+                
         if (self.easyAsylum):
             if ('c2230' in oldID):
                 if ('c5390' in newID):
@@ -1501,9 +1515,7 @@ class Randomizer:
                         specialCase = True
                     if (("c2910_0019" in creatureId or "c2910_0020" in creatureId or "c2910_0021" in creatureId) and inFile == "m13_01_00_00"):    # don't replace large skeletons in Ravelord Nito fight
                         specialCase = True
-                    if (("c2250_0003" in creatureId or "c2250_0004" in creatureId or "c2250_0005" in creatureId or "c2250_0006" in creatureId or "c2250_0007" in creatureId or "c2250_0008" in creatureId or "c2250_0009" in creatureId) and inFile == "m14_01_00_00"):    # don't replace taurus in lava
-                        specialCase = True
-
+    
                     if (disableRespawningMosquitoes):
                         if (creatureId in ['c3090_0058', 'c3090_0059', 'c3090_0085', 'c3090_0086', 'c3090_0090', 'c3090_0091']):
                             specialCase = True
