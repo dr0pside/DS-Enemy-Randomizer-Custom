@@ -1167,13 +1167,25 @@ class Randomizer:
             if ('c5290' in newID):      # Seath
                 return True
 
+        if ('c5220' in oldID):          # Nito
+            if ('c5290' in newID):      # Seath (gets stuck in ceiling)
+                return True
+            elif ('c4510' in newID):    # Kalameet (beatable but flame oneshot through pillar + skeletons = the most unfun encounter)
+                return True
+
+        if ('c3230' in oldID):          # Moonlight Butterfly (no killbox under the bridge and most bosses end up jumping off so it's best to just leave it be)
+                return True
+
+        if ('c2791' in oldID):          # Black Knight ghosts from the Kiln (if replaced then the new enemies just die)
+                return True
+        
         if (self.easyAsylum):
             if ('c2230' in oldID):
                 if ('c5390' in newID):
                     return True
 
-        if ('c5250' in oldID):
-            if ('c4100' in newID):
+        if ('c5250' in oldID):          # Ceaseless Discharge
+            if ('c4100' in newID):      # Artorias crashes the game (not added by me but worth commenting)
                 return True
 
         # When type replacement is enabled, avoid replacing multiple enemy types in one area with the same enemy
