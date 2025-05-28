@@ -7,9 +7,13 @@ BUGS FIXED:
 - Sentinels now all spawn with regular aggressive AI
 
 BALANCE CHANGES:
-- Only lava-proof enemies/bosses can spawn in the lava in Demon Ruins and Lost Izalith (basically you will have demonic statues everywhere but you won't get random free souls anymore)
-- Only lava-proof bosses can spawn in the Centipede Demon arena (so him, Quelaag or Taurus Demon)
-- Black Knight ghosts in the Kiln don't get replaced anymore (it was basically an infinite souls glitch)
+- Only lava-proof enemies/bosses can spawn in the lava in Demon Ruins and Lost Izalith (basically you will have demonic statues everywhere unless you enable the dragon butts, but you won't get random free souls anymore)
+- Only lava-proof bosses can spawn in the Centipede Demon arena to prevent insta-wins (so you'll fight him, Quelaag or Taurus Demon)
+- Black Knight ghosts in the Kiln don't get replaced anymore (other enemies and bosses would fall to their deaths instantly, which was basically an infinite souls glitch)
+- Souls gained from roaming bosses decreased from 50% to 25% of the original boss fight value (the vast majority of time they die from falling or bad spawns)
+
+MISCELLANEOUS:
+- Moonlight Butterfly will not get replaced regardless of settings (simply because most other bosses will fall off the bridge by themselves and never die as there is no killbox below)
 
 Enemy randomizer generates a random placement of enemies to make your playthrough of Dark Souls different and more challenging. Depending on the options you choose, it's possible to, for example, fight Manus (or 3 of them) in the swamps of Blighttown, or pass through the fog gate in Anor Londo only to see a puny hollow and a painting guardian instead of O&S.
 
