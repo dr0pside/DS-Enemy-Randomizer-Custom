@@ -1248,13 +1248,30 @@ class Randomizer:
         POS_DATA_COL = 5    # X pos , Y + 1, Z + 2, ROTX + 3, ROTY + 4, ROTZ + 5;
         PARTSIDX_DATA_COL = 43
 
-        MODEL_INDEX_DIFF = 0
+        MODEL_INDEX_DIFF = 2
+
+        TARGET_NAMES = {"c3230", "c3300", "c3350", "c3370", "c3410", "c3530", "c5210", "c5360"} #Enemy refs that do not need a model_index_diff
 
         rowCount = len(self.msbio.parts[2].rows)
 
         for i in range(len(refMsb.parts[2].rows)):
             if (i < rowCount):
-                if (self.isValid(self.msbio.parts[2].rows[i][NAME_DATA_COL][:5])):
+                name = self.msbio.parts[2].rows[i][NAME_DATA_COL][:5]  # Get first 5 chars of the name
+                if name in TARGET_NAMES:
+                    self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL]
+                    self.msbio.parts[2].rows[i][NPCAI_DATA_COL] = refMsb.parts[2].rows[i][NPCAI_DATA_COL]
+                    self.msbio.parts[2].rows[i][PARAM_DATA_COL] = refMsb.parts[2].rows[i][PARAM_DATA_COL]
+                    self.msbio.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL] = refMsb.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL]
+                    self.msbio.parts[2].rows[i][ANIMID_DATA_COL] = refMsb.parts[2].rows[i][ANIMID_DATA_COL]
+
+                    self.msbio.parts[2].rows[i][POS_DATA_COL] = refMsb.parts[2].rows[i][POS_DATA_COL]
+                    self.msbio.parts[2].rows[i][POS_DATA_COL + 1] = refMsb.parts[2].rows[i][POS_DATA_COL + 1]
+                    self.msbio.parts[2].rows[i][POS_DATA_COL + 2] = refMsb.parts[2].rows[i][POS_DATA_COL + 2]
+                    self.msbio.parts[2].rows[i][POS_DATA_COL + 3] = refMsb.parts[2].rows[i][POS_DATA_COL + 3]
+                    self.msbio.parts[2].rows[i][POS_DATA_COL + 4] = refMsb.parts[2].rows[i][POS_DATA_COL + 4]
+                    self.msbio.parts[2].rows[i][POS_DATA_COL + 5] = refMsb.parts[2].rows[i][POS_DATA_COL + 5]
+                    
+                else:
                     self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL] + MODEL_INDEX_DIFF
                     self.msbio.parts[2].rows[i][NPCAI_DATA_COL] = refMsb.parts[2].rows[i][NPCAI_DATA_COL]
                     self.msbio.parts[2].rows[i][PARAM_DATA_COL] = refMsb.parts[2].rows[i][PARAM_DATA_COL]
