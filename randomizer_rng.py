@@ -18,6 +18,7 @@ from enum import Enum
 from NpcParam import NpcParam
 from dcx_handler import DCXHandler
 from event_tools import EventTools
+import time
 
 #logFile = open('log.txt', 'w')
 logFile = -1
