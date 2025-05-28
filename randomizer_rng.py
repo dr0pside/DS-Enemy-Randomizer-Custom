@@ -1253,11 +1253,12 @@ class Randomizer:
         rowCount = len(self.msbio.parts[2].rows)
 
 TARGET_NAMES = ['c3230', 'c3300', 'c3350', 'c3370', 'c3410', 'c3530', 'c5210', 'c5360'] #Enemy refs that do not need a model_index_diff
+name = self.msbio.parts[2].rows[i][NAME_DATA_COL][:5]
 
  for i in range(len(refMsb.parts[2].rows)):
             if (i < rowCount):
-                if (self.isValid(self.msbio.parts[2].rows[i][NAME_DATA_COL][:5])):
-                    self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL] + MODEL_INDEX_DIFF
+                if name in TARGET_NAMES:
+                    self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL]
                     self.msbio.parts[2].rows[i][NPCAI_DATA_COL] = refMsb.parts[2].rows[i][NPCAI_DATA_COL]
                     self.msbio.parts[2].rows[i][PARAM_DATA_COL] = refMsb.parts[2].rows[i][PARAM_DATA_COL]
                     self.msbio.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL] = refMsb.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL]
@@ -1269,10 +1270,8 @@ TARGET_NAMES = ['c3230', 'c3300', 'c3350', 'c3370', 'c3410', 'c3530', 'c5210', '
                     self.msbio.parts[2].rows[i][POS_DATA_COL + 3] = refMsb.parts[2].rows[i][POS_DATA_COL + 3]
                     self.msbio.parts[2].rows[i][POS_DATA_COL + 4] = refMsb.parts[2].rows[i][POS_DATA_COL + 4]
                     self.msbio.parts[2].rows[i][POS_DATA_COL + 5] = refMsb.parts[2].rows[i][POS_DATA_COL + 5]
-            if (i < rowCount):
-                name = self.msbio.parts[2].rows[i][NAME_DATA_COL][:5]
-                if name in TARGET_NAMES:
-                    self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL]
+                else:
+                    self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL] + MODEL_INDEX_DIFF
                     self.msbio.parts[2].rows[i][NPCAI_DATA_COL] = refMsb.parts[2].rows[i][NPCAI_DATA_COL]
                     self.msbio.parts[2].rows[i][PARAM_DATA_COL] = refMsb.parts[2].rows[i][PARAM_DATA_COL]
                     self.msbio.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL] = refMsb.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL]
