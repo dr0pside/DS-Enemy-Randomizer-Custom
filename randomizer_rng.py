@@ -1175,12 +1175,9 @@ class Randomizer:
             elif ('c4510' in newID):    # Kalameet (beatable but flame oneshot through pillar + skeletons = the most unfun encounter)
                 return True
 
-        if ('c3230' in oldID):          # Moonlight Butterfly (no killbox under the bridge and most bosses end up jumping off so it's best to just leave it be)
-                return True
-
-        if ('c2791' in oldID):          # Black Knight ghosts from the Kiln (if replaced then the new enemies just die)
-                return True
-            
+        if ('c2791' in oldID):
+            return True   # Black Knight ghosts from the Kiln (if replaced then the new enemies just die)
+                
         tauruslist = ['c2250_0003', 'c2250_0004', 'c2250_0005', 'c2250_0006', 'c2250_0007', 'c2250_0008', 'c2250_0009']
         lavademonslist = ['c5200', 'c5280', 'c2430', 'c2250', 'c3421']
         
@@ -1465,9 +1462,7 @@ class Randomizer:
                             newPos = (10.69, 48.92, 124.35)
                             newRot = (0.00, 1.84, 0.00)
                     elif ((inFile == "m12_00_00_00" or inFile == "m12_00_00_01") and "c3230_0000" in creatureId):     # Moonlight Butterfly boss
-                        changePos = True
-                        newPos = (196.12, 8.09, 62.25)
-                        newRot = (0.00, 27.37, 0.00)
+                        specialCase = True
                     elif (inFile == "m14_01_00_00" and "c5250_0000" in creatureId):     # Cheesless Discharge
                         changePos = True
                         newPos = (396.14, -278.14, 74.56)
