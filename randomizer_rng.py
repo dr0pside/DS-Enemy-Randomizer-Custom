@@ -1248,7 +1248,7 @@ class Randomizer:
         POS_DATA_COL = 5    # X pos , Y + 1, Z + 2, ROTX + 3, ROTY + 4, ROTZ + 5;
         PARTSIDX_DATA_COL = 43
 
-        MODEL_INDEX_DIFF = 2
+        MODEL_INDEX_DIFF = 0
 
         rowCount = len(self.msbio.parts[2].rows)
 
