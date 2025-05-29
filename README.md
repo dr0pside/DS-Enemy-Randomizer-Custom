@@ -4,7 +4,7 @@ Update of the original DS1 Enemy Randomizer to change some things and overall ma
 
 BUGS FIXED:
 - No more Seath or Kalameet in Nito's arena (Seath gets stuck in the ceiling and is unkillable, Kalameet is just extremely unfun and RNG-heavy as he can one-shot you through the pillar and you have the skeletons coming after you)
-- Sentinels now all spawn with regular aggressive AI
+- Lesser Sentinels now spawn in place of the non-aggresive bugged Royal Sentinels
 
 BALANCE CHANGES:
 - Only lava-proof enemies/bosses can spawn in the lava in Demon Ruins and Lost Izalith (basically you will have demonic statues everywhere unless you enable the dragon butts, but you won't get random free souls anymore)
@@ -15,9 +15,10 @@ BALANCE CHANGES:
 MISCELLANEOUS:
 - Moonlight Butterfly will not get replaced regardless of settings (simply because most other bosses will fall off the bridge by themselves and never die as there is no killbox below)
 
+# ORIGINAL DESCRIPTION:
+
 Enemy randomizer generates a random placement of enemies to make your playthrough of Dark Souls different and more challenging. Depending on the options you choose, it's possible to, for example, fight Manus (or 3 of them) in the swamps of Blighttown, or pass through the fog gate in Anor Londo only to see a puny hollow and a painting guardian instead of O&S.
 
-## The mod can be downloaded from
 ------
 
 # Installation Instructions [Prepare to Die Edition]:
