@@ -1637,14 +1637,13 @@ class Randomizer:
                                 newAiParamIndex = randint(0, len(self.validNew[newChar][NewCol.AI.value]) - 1)
                                 newAI = self.validNew[newChar][NewCol.AI.value][newAiParamIndex]
                                 newParam = self.validNew[newChar][NewCol.PARAM.value][newAiParamIndex]
+                            if str(newAI) == "287001": #Sentinel param fix
+                                newParam = "287010"
                                 
-                            #Change Sentinel Param:    
-                            if newAI == "287001":
-                                newParam == "287010"
-
                             paramValue = int(newParam)
                             if (creatureType == "0" and newChar in self.validNewBossIndices and (self.validNew[newChar][NewCol.ID.value] != 'c5351')):
                                 paramValue += 50
+                            if self.validNew[newChar][NewCol.AI.value] == 
 
                             self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = paramValue
                             aiStr = "  ai = <original>; param = " + newParam
