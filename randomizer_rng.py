@@ -159,6 +159,7 @@ class Randomizer:
         }
     }
 
+    
     itemLotsToAward = {
         'm10_01_00_00': {
             'c2300_0000': 23000100,
@@ -1636,6 +1637,10 @@ class Randomizer:
                                 newAiParamIndex = randint(0, len(self.validNew[newChar][NewCol.AI.value]) - 1)
                                 newAI = self.validNew[newChar][NewCol.AI.value][newAiParamIndex]
                                 newParam = self.validNew[newChar][NewCol.PARAM.value][newAiParamIndex]
+                                
+                            #Change Sentinel Param:    
+                            if newAI == "287001":
+                                newParam == "287010"
 
                             paramValue = int(newParam)
                             if (creatureType == "0" and newChar in self.validNewBossIndices and (self.validNew[newChar][NewCol.ID.value] != 'c5351')):
@@ -2076,7 +2081,7 @@ class Randomizer:
                         # Remove the forced animation playing at the start of MLB boss fight
                         if (inFile == "m12_00_00_00" and "c3230_0000" in creatureId and not "c3230" in self.validNew[newChar][NewCol.ID.value]):
                             eventTools.ApplyMoonlightButterflyAnimFix()
-
+                            
                         
                         printLog("Replacing (" + creatureId + ") " + self.validTargets[self.validIndex(creatureId)][1] + " with (" + self.validNew[newChar][NewCol.ID.value] + ") " + self.validNew[newChar][NewCol.NAME.value] + "[" + str(newChar) + "]", logFile, False)
 
