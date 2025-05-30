@@ -1465,8 +1465,6 @@ class Randomizer:
                     elif ((inFile == "m12_00_00_00" or inFile == "m12_00_00_01") and "c3230_0000" in creatureId):     # Moonlight Butterfly boss
                         if (moonReplace == 1):
                             specialCase = True
-                        else:
-                            specialCase = False
                     elif (inFile == "m14_01_00_00" and "c5250_0000" in creatureId):     # Cheesless Discharge
                         changePos = True
                         newPos = (396.14, -278.14, 74.56)
@@ -1520,6 +1518,32 @@ class Randomizer:
                     if (disableRespawningMosquitoes):
                         if (creatureId in ['c3090_0058', 'c3090_0059', 'c3090_0085', 'c3090_0086', 'c3090_0090', 'c3090_0091']):
                             specialCase = True
+                                                
+                            #lavaProof
+                    centipederef = ['c5200_0000', 'c5201_0000', 'c5201_0001', 'c5201_0002', 'c5201_0003', 'c5201_0004', 'c5202_0000', 'c5202_0001', 'c5202_0002', 'c5202_0003', 'c5202_0004']
+                    if ("c2232" in creatureId and "c2232" in self.validNew[newChar][NewCol.ID.value]):
+                         changePos = False
+                         if (lavaProof == 1):
+                            if (creatureId in self.lavapos):
+                                if (enemyMode == 1):
+                                    newChar = random.choice(self.lavabosses)
+                                if (enemyMode == 2):
+                                    newChar = random.choice(self.lavaenemies)
+                                if (enemyMode == 3):
+                                    if (randint(1,100) <= bossChance):
+                                        newChar = random.choice(self.lavabosses)
+                                    else:
+                                        newChar = random.choice(self.lavaenemies)
+                            if (creatureId in centipederef):
+                                if (bossMode == 1):
+                                    newChar = random.choice(self.lavabosses)
+                                if (bossMode == 2):
+                                    newChar = random.choice(self.lavaenemies)
+                                if (bossMode == 3):
+                                    if (randint(1,100) <= bossChance):
+                                        newChar = random.choice(self.lavabosses)
+                                    else:
+                                        newChar = random.choice(self.lavaenemies)
                             
 
                     if (self.isValid(creatureId) and not specialCase):
@@ -1667,32 +1691,6 @@ class Randomizer:
                                         newAnim = self.getRandomFromList(self.validNew[newChar][NewCol.ANIMIDS.value])
                                         self.msbio.parts[2].rows[rowIndex][ANIMID_DATA_COL] = int(newAnim)
                                         animLine = " >> changing idle anim from " + str(currentAnim) + " to " + newAnim + ";"
-
-                            #lavaProof
-                            centipederef = ['c5200_0000', 'c5201_0000', 'c5201_0001', 'c5201_0002', 'c5201_0003', 'c5201_0004', 'c5202_0000', 'c5202_0001', 'c5202_0002', 'c5202_0003', 'c5202_0004']
-                            if ("c2232" in creatureId and "c2232" in self.validNew[newChar][NewCol.ID.value]):
-                                changePos = False
-                            if (lavaProof == 1):
-                                if (creatureId in lavapos):
-                                    if (enemyMode == 1):
-                                        newChar = random.choice(lavabosses)
-                                    if (enemyMode == 2):
-                                        newChar = random.choice(lavaenemies)
-                                    if (enemyMode == 3):
-                                        if (randint(1,100) <= bossChance):
-                                            newChar = random.choice(lavabosses)
-                                        else:
-                                            newChar = random.choice(lavaenemies)
-                                if (creatureId in centipederef):
-                                    if (bossMode == 1):
-                                        newChar = random.choice(lavabosses)
-                                    if (bossMode == 2):
-                                        newChar = random.choice(lavaenemies)
-                                    if (bossMode == 3):
-                                        if (randint(1,100) <= bossChance):
-                                            newChar = random.choice(lavabosses)
-                                        else:
-                                            newChar = random.choice(lavaenemies)
                                         
                             # Update position if necessary:
                             posLine = ""
