@@ -139,7 +139,7 @@ class MainWindow():
         ["* Hostile Undead Merchant, Andre, Vamos and Gough are not placed into the world.", "* Hostile Undead Merchant, Andre, Vamos and Gough can be placed into the world\n  as enemies."],
         ["* The respawning mosquitoes in Blighttown swamp are NOT replaced.", "* The respawning mosquitoes in Blighttown swamp are replaced. Replacing enemy\n  will respawn multiple times just like the original mosquitoes."],
         ["* Any enemy and boss can spawn in lava.", "* Only lava-proof enemies and bosses spawn in lava."],
-        ["* Moonlight Butterfly gets replaced (very high chance for the new boss\n to disappear)", "* Moonlight Butterfly does not get replaced"]]
+        ["* Moonlight Butterfly gets replaced (very high chance for the new boss\n to fall off the bridge which won't kill them)", "* Moonlight Butterfly does not get replaced"]]
 
     def __init__(self):
         self.root = Tk()
