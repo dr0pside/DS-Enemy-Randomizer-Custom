@@ -137,12 +137,13 @@ class MainWindow():
         ["* When a boss is being replaced by a boss, the replacement is entirely random.", "* When a boss is being replaced by a boss, the randomizer tries to spawn bosses\n  that have not yet been used (whenever it's possible). Some boss repetition\n  still happens."],
         ["* Bosses replacing normal enemies respawn like normal enemies.", "* Bosses that replace normal enemies stay dead permanently once killed."],
         ["* Hostile Undead Merchant, Andre, Vamos and Gough are not placed into the world.", "* Hostile Undead Merchant, Andre, Vamos and Gough can be placed into the world\n  as enemies."],
-        ["* The respawning mosquitoes in Blighttown swamp are NOT replaced.", "* The respawning mosquitoes in Blighttown swamp are replaced. Replacing enemy\n  will respawn multiple times just like the original mosquitoes."]]
+        ["* The respawning mosquitoes in Blighttown swamp are NOT replaced.", "* The respawning mosquitoes in Blighttown swamp are replaced. Replacing enemy\n  will respawn multiple times just like the original mosquitoes."]
+        ["* Only Lava-proof enemies and bosses spawn in Lava.", "*Any enemy can spawn in Lava."]]
 
     def __init__(self):
         self.root = Tk()
         self.randomizerVersion = "v0.4.2"
-        self.root.title("Dark Souls - Enemy randomizer " + self.randomizerVersion + " by rycheNhavalys, updated by AdiO")
+        self.root.title("Dark Souls - Enemy randomizer " + self.randomizerVersion + " by rycheNhavalys, custom version by AdiO")
 
         self.randomizer = Randomizer()
 
@@ -210,7 +211,7 @@ class MainWindow():
         self.sellout_close_button.grid(row=1, column=0, sticky="NWS", padx=6, pady=4)
         self.sellout_close_button.grid_remove() # Hide the sellout page closing button by default
 
-        self.tags=["f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f"]
+        self.tags=["f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f"]
 
         self.hoverO = -1
         self.hoverL = -1
@@ -268,6 +269,9 @@ class MainWindow():
         self.mosquitoReplacement = IntVar()
         self.mosquitoReplacement.set(1)
 
+        self.lavaProof = IntVar()
+        self.lavaProof.set(1)
+
         self.seedValue = StringVar()
         self.seedValue.set("")
 
@@ -288,9 +292,9 @@ class MainWindow():
         self.settingsPage2.columnconfigure(3, weight=1)
         self.settingsPage2.columnconfigure(2, weight=1)
 
+        self.settingsPage3.columnconfigure(3, weight=1)
         self.settingsPage3.columnconfigure(2, weight=1)
         self.settingsPage3.columnconfigure(1, weight=1)
-        self.settingsPage3.columnconfigure(0, weight=1)
 
         # Seed entry
 
@@ -618,6 +622,19 @@ class MainWindow():
         self.BindTags(self.mosquitoBtn1, 17, 1)
         self.BindTags(self.mosquitoBtn2, 17, 0)
 
+        # Lava-Proof Enemies
+
+        self.lavaproof_frame = LabelFrame(self.settingsPage3, text="Lava-Proof Enemies: ")
+        self.lavaproof_frame.grid(row=1, column=0, sticky='NWES', padx=2)
+        
+        self.lavaproofBtn1 = Radiobutton(self.lavaproof_frame, text="Enabled", variable=self.lavaProof, value=1, command=self.UpdateMessageArea)
+        self.lavaproofBtn1.pack(anchor=W)
+        self.lavaproofBtn2 = Radiobutton(self.mosquito_frame, text="Disabled", variable=self.lavaProof, value=0, command=self.UpdateMessageArea)
+        self.lavaproofBtn2.pack(anchor=W)
+
+        self.BindTags(self.lavaProofBtn1, 18, 1)
+        self.BindTags(self.lavaProofBtn2, 18, 0)
+
         self.isSelloutActive = False
 
         if (self.randomizer.canRandomize):
@@ -818,6 +835,11 @@ class MainWindow():
                                     self.tags[i] = "f"
                                 else:
                                     self.tags[i] = "c"
+                            elif (i == 18):
+                                if (self.lavaProof.get() == self.hoverL):
+                                    self.tags[i] = "f"
+                                else:
+                                    self.tags[i] = "c"
                         else:
                             self.tags[i] = "uf"
 
@@ -848,6 +870,7 @@ class MainWindow():
                     self.AddDescription(15, self.respawingBosses.get())
                     self.AddDescription(16, self.hostileNPCs.get())
                     self.AddDescription(17, self.mosquitoReplacement.get())
+                    self.AddDescription(18, self.lavaProof.get())
 
 
                 self.msg_area.config(state = "disabled")
@@ -1539,8 +1562,9 @@ class MainWindow():
         inpRespawningBosses = 0
         inpHostileNPC = 0
         inpMosquito = 0
+        inpLava = 0
         inpSeed = ""
-        if (len(parts) == 22):
+        if (len(parts) == 23):
             try:
                 inpBossMode = int(parts[0])
                 if (inpBossMode < 0 or inpBossMode > 3):
@@ -1625,8 +1649,12 @@ class MainWindow():
                 inpMosquito = int(parts[20])
                 if (inpMosquito < 0 or inpMosquito > 1):
                     isValidConfig = False
+
+                inpLava = int(parts[21])
+                if (inpLava <0 or inpLava >1):
+                    isValidConfig = False
                 
-                inpSeed = parts[21].replace("'''", "")
+                inpSeed = parts[22].replace("'''", "")
             except:
                 isValidConfig = False
         else:
@@ -1668,6 +1696,7 @@ class MainWindow():
             self.respawingBosses.set(inpRespawningBosses)
             self.hostileNPCs.set(inpHostileNPC)
             self.mosquitoReplacement.set(inpMosquito)
+            self.lavaProof.set(inpLava)
             self.seedValue.set(inpSeed)
             self.UpdateMessageArea()
             if (showMessages):
