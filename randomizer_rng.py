@@ -1515,45 +1515,6 @@ class Randomizer:
                         if ((inFile == "m12_00_00_00" or inFile == "m12_00_00_01") and "c3230_0000" in creatureId):
                             specialCase = True
                                         
-                    #Lava enemies handling if Lava-proof mode enabled:
-    
-                    lavabosses = [105, 115, 23, 9, 81]
-                    lavaenemies = [23, 81]
-                    lavaall = ['c5200', 'c5280', 'c2430', 'c2250', 'c3421', 'c2430', 'c3421']
-                    lavapos = [
-                        'c2250_0003', 'c2250_0004', 'c2250_0005', 'c2250_0006', 'c2250_0007', 'c2250_0008', 'c2250_0009',
-                        'c3421_0000', 'c3421_0001', 'c3421_0002', 'c3421_0003', 'c3421_0004', 'c3421_0005', 'c3421_0006',
-                        'c3421_0007', 'c3421_0008', 'c3421_0009', 'c3421_0010', 'c3421_0011', 'c3421_0012', 'c3421_0013',
-                        'c3421_0014', 'c3421_0015', 'c3421_0016', 'c3421_0017', 'c3421_0018', 'c3421_0019', 'c3421_0020',
-                        'c3421_0021', 'c3421_0022', 'c3421_0023', 'c3421_0024', 'c3421_0025', 'c3421_0026', 'c3421_0027',
-                        'c3421_0028'
-                    ] #good use of ai
-
-                    if (lavaProof == 1):
-                        if (creatureId in lavapos and creatureType == "0"):
-                            if (enemyMode == 0):
-                                specialCase = True
-                            elif (enemyMode == 1):
-                                newChar = self.getRandomFromList(lavabosses)
-                            elif (enemyMode == 2):
-                                newChar = self.getRandomFromList(lavaenemies)
-                            elif (enemyMode == 3):
-                                if (randint(1, 100) <= bossChance):
-                                    newChar = self.getRandomFromList(lavabosses)
-                                else:
-                                    newChar = self.getRandomFromList(lavaenemies)
-                        if (creatureId == "c5200_000"): #Centipede Boss
-                            if (bossMode == 0):
-                                specialCase = True
-                            elif (bossMode == 1):
-                                newChar = self.getRandomFromList(lavabosses)
-                            elif (bossMode == 2):
-                                newChar = self.getRandomFromList(lavaenemies)
-                            elif (bossMode == 3):
-                                if (randint(1, 100) <= bossChance):
-                                    newChar = self.getRandomFromList(lavabosses)
-                                else:
-                                    newChar = self.getRandomFromList(lavaenemies)
 
                     if (self.isValid(creatureId) and not specialCase):
                         newChar = -1
@@ -1582,6 +1543,18 @@ class Randomizer:
 
                         
                         if (randint(1, 100) <= replaceChance):
+                            
+                            lavabosses = [105, 115, 23, 9, 81]
+                            lavaenemies = [23, 81]
+                            lavaall = ['c5200', 'c5280', 'c2430', 'c2250', 'c3421', 'c2430', 'c3421']
+                            lavapos = [
+                                'c2250_0003', 'c2250_0004', 'c2250_0005', 'c2250_0006', 'c2250_0007', 'c2250_0008', 'c2250_0009',
+                                'c3421_0000', 'c3421_0001', 'c3421_0002', 'c3421_0003', 'c3421_0004', 'c3421_0005', 'c3421_0006',
+                                'c3421_0007', 'c3421_0008', 'c3421_0009', 'c3421_0010', 'c3421_0011', 'c3421_0012', 'c3421_0013',
+                                'c3421_0014', 'c3421_0015', 'c3421_0016', 'c3421_0017', 'c3421_0018', 'c3421_0019', 'c3421_0020',
+                                'c3421_0021', 'c3421_0022', 'c3421_0023', 'c3421_0024', 'c3421_0025', 'c3421_0026', 'c3421_0027',
+                                'c3421_0028'
+                            ] #good use of ai
 
                             maxCreatureSize = 5
                             if (fitMode == 0):
@@ -1634,6 +1607,32 @@ class Randomizer:
                                     if (npcMode == 1 or npcMode == 3):
                                         if (randint(1,100) > 60):
                                             newChar = 117
+                                                                #Lava enemies handling if Lava-proof mode enabled:
+                            elif (lavaProof == 1):
+                                if (creatureId in lavapos and creatureType == "0"):
+                                    if (enemyMode == 0):
+                                        specialCase = True
+                                    elif (enemyMode == 1):
+                                        newChar = self.getRandomFromList(lavabosses)
+                                    elif (enemyMode == 2):
+                                        newChar = self.getRandomFromList(lavaenemies)
+                                    elif (enemyMode == 3):
+                                        if (randint(1, 100) <= bossChance):
+                                            newChar = self.getRandomFromList(lavabosses)
+                                        else:
+                                            newChar = self.getRandomFromList(lavaenemies)
+                                if (creatureId == "c5200_000"): #Centipede Boss
+                                    if (bossMode == 0):
+                                        specialCase = True
+                                    elif (bossMode == 1):
+                                        newChar = self.getRandomFromList(lavabosses)
+                                    elif (bossMode == 2):
+                                        newChar = self.getRandomFromList(lavaenemies)
+                                    elif (bossMode == 3):
+                                        if (randint(1, 100) <= bossChance):
+                                            newChar = self.getRandomFromList(lavabosses)
+                                        else:
+                                            newChar = self.getRandomFromList(lavaenemies)
                         
                         else:
                             newChar = -2
