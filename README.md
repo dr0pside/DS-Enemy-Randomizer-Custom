@@ -10,12 +10,11 @@ BALANCE CHANGES:
 - Only lava-proof enemies/bosses can spawn in the lava in Demon Ruins and Lost Izalith (basically you will have demonic statues everywhere unless you enable the dragon butts, but you won't get random free souls anymore)
 - Only lava-proof bosses can spawn in the Centipede Demon arena to prevent insta-wins (so you'll fight him, Quelaag or Taurus Demon)
 - Black Knight ghosts in the Kiln don't get replaced anymore (other enemies and bosses would fall to their deaths instantly, which was basically an infinite souls glitch)
-- Souls gained from roaming bosses decreased from 50% to 25% of the original boss fight value (the vast majority of time they die from falling or bad spawns)
 
 MISCELLANEOUS:
 - Moonlight Butterfly will not get replaced by default (simply because most other bosses will fall off the bridge by themselves and never die as there is no killbox below).
 
-Lava-Proof enemy handling & Moonlight Butterfly changes can be toggled from inside the UI (Even More Options tab). Might add one for the soul multiplier in the future.
+Lava-Proof enemy handling & Moonlight Butterfly changes can be toggled from inside the UI (Even More Options tab)
 
 # ORIGINAL DESCRIPTION:
 
