@@ -138,12 +138,13 @@ class MainWindow():
         ["* Bosses replacing normal enemies respawn like normal enemies.", "* Bosses that replace normal enemies stay dead permanently once killed."],
         ["* Hostile Undead Merchant, Andre, Vamos and Gough are not placed into the world.", "* Hostile Undead Merchant, Andre, Vamos and Gough can be placed into the world\n  as enemies."],
         ["* The respawning mosquitoes in Blighttown swamp are NOT replaced.", "* The respawning mosquitoes in Blighttown swamp are replaced. Replacing enemy\n  will respawn multiple times just like the original mosquitoes."]
-        ["* Only Lava-proof enemies and bosses spawn in Lava.", "*Any enemy can spawn in Lava."]]
+        ["* Only lava-proof enemies and bosses spawn in lava.", "* Any enemy and boss can spawn in lava."]
+        ["* Moonlight Butterfly does not get replaced.", " Moonlight Butterfly gets replaced (very high chance for the new boss\n to disappear)"]]
 
     def __init__(self):
         self.root = Tk()
         self.randomizerVersion = "v0.4.2"
-        self.root.title("Dark Souls - Enemy randomizer " + self.randomizerVersion + " by rycheNhavalys, custom version by AdiO")
+        self.root.title("Dark Souls - Enemy randomizer " + self.randomizerVersion + " by rycheNhavalys")
 
         self.randomizer = Randomizer()
 
@@ -211,7 +212,7 @@ class MainWindow():
         self.sellout_close_button.grid(row=1, column=0, sticky="NWS", padx=6, pady=4)
         self.sellout_close_button.grid_remove() # Hide the sellout page closing button by default
 
-        self.tags=["f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f"]
+        self.tags=["f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f"]
 
         self.hoverO = -1
         self.hoverL = -1
@@ -272,6 +273,9 @@ class MainWindow():
         self.lavaProof = IntVar()
         self.lavaProof.set(1)
 
+        self.moonReplace = IntVar()
+        self.moonReplace.set(0)
+
         self.seedValue = StringVar()
         self.seedValue.set("")
 
@@ -292,9 +296,9 @@ class MainWindow():
         self.settingsPage2.columnconfigure(3, weight=1)
         self.settingsPage2.columnconfigure(2, weight=1)
 
+        self.settingsPage3.columnconfigure(4, weight=1)
         self.settingsPage3.columnconfigure(3, weight=1)
         self.settingsPage3.columnconfigure(2, weight=1)
-        self.settingsPage3.columnconfigure(1, weight=1)
 
         # Seed entry
 
@@ -629,14 +633,26 @@ class MainWindow():
         
         self.lavaproofBtn1 = Radiobutton(self.lavaproof_frame, text="Enabled", variable=self.lavaProof, value=1, command=self.UpdateMessageArea)
         self.lavaproofBtn1.pack(anchor=W)
-        self.lavaproofBtn2 = Radiobutton(self.mosquito_frame, text="Disabled", variable=self.lavaProof, value=0, command=self.UpdateMessageArea)
+        self.lavaproofBtn2 = Radiobutton(self.lavaproof_frame, text="Disabled", variable=self.lavaProof, value=0, command=self.UpdateMessageArea)
         self.lavaproofBtn2.pack(anchor=W)
 
         self.BindTags(self.lavaProofBtn1, 18, 1)
         self.BindTags(self.lavaProofBtn2, 18, 0)
 
+        # Moonlight Butterfly Handling
+        
+        self.moon_frame = LabelFrame(self.settingsPage3, text="Moonlight Butterfly Replacement: ")
+        self.moon_frame.grid(row=1, column=1, sticky='NWES', padx=2)
+        
+        self.moonBtn1 = Radiobutton(self.moon_frame, text="Enabled", variable=self.moonReplace, value=1, command=self.UpdateMessageArea)
+        self.moonBtn1.pack(anchor=W)
+        self.moonBtn2 = Radiobutton(self.moon_frame, text="Disabled", variable=self.moonReplace, value=0, command=self.UpdateMessageArea)
+        self.moonBtn2.pack(anchor=W)
         self.isSelloutActive = False
 
+        self.BindTags(self.moonBtn1, 19, 1)
+        self.BindTags(self.moonBtn2, 19, 0)
+        
         if (self.randomizer.canRandomize):
             if (self.randomizer.exeStatus == "Unknown"):
                 # Show a warning if the .exe checksum is unknown.
@@ -840,6 +856,9 @@ class MainWindow():
                                     self.tags[i] = "f"
                                 else:
                                     self.tags[i] = "c"
+                            elif (i == 19):
+                                if (self.moonReplace.get() == self.hoverL):
+                                    self.tags[i[ = "f"
                         else:
                             self.tags[i] = "uf"
 
@@ -871,6 +890,7 @@ class MainWindow():
                     self.AddDescription(16, self.hostileNPCs.get())
                     self.AddDescription(17, self.mosquitoReplacement.get())
                     self.AddDescription(18, self.lavaProof.get())
+                    self.AddDescription(19, self.moonReplace.get())
 
 
                 self.msg_area.config(state = "disabled")
@@ -1519,7 +1539,7 @@ class MainWindow():
                 self.ApplyConfigString(False)
 
     def RestoreDefaultSettings(self):
-        self.configString = "1/-/2/-/0/-/1/-/0/-/3/-/100/-/10/-/90/-/1/-/1/-/0/-/50/-/1/-/1/-/1/-/1/-/0/-/0/-/0/-/1/-/''''''"
+        self.configString = "1/-/2/-/0/-/1/-/0/-/3/-/100/-/10/-/90/-/1/-/1/-/0/-/50/-/1/-/1/-/1/-/1/-/0/-/0/-/0/-/1/-/1/-/0/''''''"
         self.configValue.set(self.configString)
         self.ApplyConfigString(False)
 
@@ -1530,7 +1550,7 @@ class MainWindow():
         Build the compact config string.
         """
 
-        self.configString = str(self.bossReplaceMode.get()) + "/-/" + str(self.enemyReplaceMode.get()) + "/-/" + str(self.npcMode.get()) + "/-/" + str(self.mimicMode.get()) + "/-/" + str(self.fitMode.get()) + "/-/" + str(self.difficultyMode.get()) + "/-/" + str(self.replace_chance_slider.get()) + "/-/" + str(self.boss_chance_slider.get()) + "/-/"  + str(self.boss_chance_slider_bosses.get()) + "/-/" + str(self.gargoyleMode.get()) + "/-/" + str(self.diffStrictness.get()) + "/-/" + str(self.tposeCity.get()) + "/-/" + str(self.boss_souls_slider.get()) + "/-/" + str(self.pinwheelChaos.get()) + "/-/" + str(self.typeReplacement.get()) + "/-/" + str(self.gwynNerf.get()) + "/-/" + str(self.preventSame.get()) + "/-/" + str(self.uniqueBosses.get()) + "/-/" + str(self.respawingBosses.get()) + "/-/" + str(self.hostileNPCs.get()) + "/-/" + str(self.mosquitoReplacement.get()) + "/-/'''" + self.seedValue.get() + "'''"
+        self.configString = str(self.bossReplaceMode.get()) + "/-/" + str(self.enemyReplaceMode.get()) + "/-/" + str(self.npcMode.get()) + "/-/" + str(self.mimicMode.get()) + "/-/" + str(self.fitMode.get()) + "/-/" + str(self.difficultyMode.get()) + "/-/" + str(self.replace_chance_slider.get()) + "/-/" + str(self.boss_chance_slider.get()) + "/-/"  + str(self.boss_chance_slider_bosses.get()) + "/-/" + str(self.gargoyleMode.get()) + "/-/" + str(self.diffStrictness.get()) + "/-/" + str(self.tposeCity.get()) + "/-/" + str(self.boss_souls_slider.get()) + "/-/" + str(self.pinwheelChaos.get()) + "/-/" + str(self.typeReplacement.get()) + "/-/" + str(self.gwynNerf.get()) + "/-/" + str(self.preventSame.get()) + "/-/" + str(self.uniqueBosses.get()) + "/-/" + str(self.respawingBosses.get()) + "/-/" + str(self.hostileNPCs.get()) + "/-/" + str(self.mosquitoReplacement.get()) + "/-/" + str(self.lavaProof.get()) + "/-/" + str(self.moonReplace.get()) + "/-/''''''" + self.seedValue.get() + "'''"
         self.configValue.set(self.configString)
 
     def ApplyConfigString(self, showMessages = True):
@@ -1563,8 +1583,9 @@ class MainWindow():
         inpHostileNPC = 0
         inpMosquito = 0
         inpLava = 0
+        inpMoon = 0
         inpSeed = ""
-        if (len(parts) == 23):
+        if (len(parts) == 24):
             try:
                 inpBossMode = int(parts[0])
                 if (inpBossMode < 0 or inpBossMode > 3):
@@ -1653,8 +1674,12 @@ class MainWindow():
                 inpLava = int(parts[21])
                 if (inpLava <0 or inpLava >1):
                     isValidConfig = False
+                    
+                inpMoon = int(parts[22])
+                if (inpMoon <0 or inpMoon >1):
+                    isValidConfig = False
                 
-                inpSeed = parts[22].replace("'''", "")
+                inpSeed = parts[23].replace("'''", "")
             except:
                 isValidConfig = False
         else:
@@ -1697,6 +1722,7 @@ class MainWindow():
             self.hostileNPCs.set(inpHostileNPC)
             self.mosquitoReplacement.set(inpMosquito)
             self.lavaProof.set(inpLava)
+            self.moonReplace.set(inpMoon)
             self.seedValue.set(inpSeed)
             self.UpdateMessageArea()
             if (showMessages):
