@@ -220,7 +220,6 @@ class Randomizer:
         self.currentBosses = []
         self.spawnNPCS = False
         self.easyAsylum = False
-        self.lavaProof = False
 
         self.missingMSB = 0
         self.missingLUABND = 0
@@ -912,7 +911,7 @@ class Randomizer:
 
         return returnChar
 
-    def GetNormalEnemy(self, diffmode, mapname, careAboutLimit, maxSize, desiredDifficulty, diffStrictness, originalEnemyID, lavaProof):
+    def GetNormalEnemy(self, diffmode, mapname, careAboutLimit, maxSize, desiredDifficulty, diffStrictness, originalEnemyID):
         """
         @diffmode           selected difficulty mode
         @mapname            the map we are currently randomizing
@@ -940,11 +939,11 @@ class Randomizer:
 
         if (diffmode >= 3 and mapname == "m18_01_00_00" and originalEnemyID in self.EASYASYLUM_TARGETS):
             newC = self.getRandomFromList(self.HARDCODED_ASYLUM_NORMAL)
-        if (originalEnemyID in self.lavapos and lavaProof == 1):
+        if (originalEnemyID in self.lavapos and lavaProof = True):
             newC = self.getRandomFromList(self.lavaenemies)
         return newC
 
-    def GetBossEnemy(self, diffmode, mapname, careAboutLimit, maxSize, desiredDifficulty, diffStrictness, originalEnemyID, canBeNormal, lavaProof, replacingBoss = False):
+    def GetBossEnemy(self, diffmode, mapname, careAboutLimit, maxSize, desiredDifficulty, diffStrictness, originalEnemyID, canBeNormal, replacingBoss = False):
         """
         @diffmode           selected difficulty mode
         @mapname            the map we are currently randomizing
@@ -980,12 +979,12 @@ class Randomizer:
 
         if (diffmode >= 3 and mapname == "m18_01_00_00" and originalEnemyID in self.EASYASYLUM_TARGETS):
             newC = self.getRandomFromList(self.HARDCODED_ASYLUM_BOSSES)
-        if (originalEnemyID in self.lavapos and lavaProof == 1):
+        if (originalEnemyID in self.lavapos and lavaProof = True):
             newC = self.getRandomFromList(self.lavabosses)
             
         return newC
 
-    def GetNormalOrBossEnemy(self, diffmode, mapname, bosschance, careAboutLimit, maxSize, desiredDifficulty, diffStrictness, originalEnemyID, lavaProof, replacingBoss = False):
+    def GetNormalOrBossEnemy(self, diffmode, mapname, bosschance, careAboutLimit, maxSize, desiredDifficulty, diffStrictness, originalEnemyID, replacingBoss = False):
         """
         @diffmode           selected difficulty mode
         @mapname            the map we are currently randomizing
@@ -1001,9 +1000,9 @@ class Randomizer:
         Returns the index a normal or a boss enemy.
         """
         if (randint(1, 100) <= bosschance):
-            return self.GetBossEnemy(diffmode, mapname, careAboutLimit, maxSize, desiredDifficulty, diffStrictness, originalEnemyID, lavaProof, True, replacingBoss)
+            return self.GetBossEnemy(diffmode, mapname, careAboutLimit, maxSize, desiredDifficulty, diffStrictness, originalEnemyID, True, replacingBoss)
         else:
-            return self.GetNormalEnemy(diffmode, mapname, careAboutLimit, maxSize, desiredDifficulty, diffStrictness, originalEnemyID, lavaProof)
+            return self.GetNormalEnemy(diffmode, mapname, careAboutLimit, maxSize, desiredDifficulty, diffStrictness, originalEnemyID)
 
     def revertToNormal(self, revertEffectFiles = True):
         """
@@ -1568,25 +1567,25 @@ class Randomizer:
 
                                 if (not isMimic or mimicMode == 1):                                 #mimic replace mode
                                     if (enemyMode == 1):     #replace with bosses only
-                                        newChar = self.GetBossEnemy(diffMode, inFile, True, maxCreatureSize, expectedDifficulty, diffStrictness, lavaProof, creatureId, False)
+                                        newChar = self.GetBossEnemy(diffMode, inFile, True, maxCreatureSize, expectedDifficulty, diffStrictness, creatureId, False)
                                     elif (enemyMode == 2):   #replace with normals only
-                                        newChar = self.GetNormalEnemy(diffMode, inFile, True, maxCreatureSize, expectedDifficulty, diffStrictness, lavaProof, creatureId)
+                                        newChar = self.GetNormalEnemy(diffMode, inFile, True, maxCreatureSize, expectedDifficulty, diffStrictness, creatureId)
                                     elif (enemyMode == 3):   #replace with both
-                                        newChar = self.GetNormalOrBossEnemy(diffMode, inFile, bossChance, True, maxCreatureSize, expectedDifficulty, diffStrictness, lavaProof, creatureId)
+                                        newChar = self.GetNormalOrBossEnemy(diffMode, inFile, bossChance, True, maxCreatureSize, expectedDifficulty, diffStrictness, creatureId)
                                 else:
                                     newChar = -3
                             
                             elif (creatureType == "1" and bossMode != 0):     #replacing boss (dont care about enemy limit so bosses _can_ be unique)
                                 if (bossMode == 1):     #replace with bosses only
-                                    newChar = self.GetBossEnemy(diffMode, inFile, False, maxCreatureSize, expectedDifficulty, diffStrictness, lavaProof, creatureId, False, True)
+                                    newChar = self.GetBossEnemy(diffMode, inFile, False, maxCreatureSize, expectedDifficulty, diffStrictness, creatureId, False, True)
 
                                     if (not newChar in self.currentBosses):
                                         self.currentBosses.append(newChar)
 
                                 elif (bossMode == 2):   #replace with normals only
-                                    newChar = self.GetNormalEnemy(diffMode, inFile, False, maxCreatureSize, expectedDifficulty, diffStrictness, lavaProof, creatureId)
+                                    newChar = self.GetNormalEnemy(diffMode, inFile, False, maxCreatureSize, expectedDifficulty, diffStrictness, creatureId)
                                 elif (bossMode == 3):   #replace with both
-                                    newChar = self.GetNormalOrBossEnemy(diffMode, inFile, bossChanceBosses, False, maxCreatureSize, expectedDifficulty, diffStrictness, lavaProof, creatureId, True)
+                                    newChar = self.GetNormalOrBossEnemy(diffMode, inFile, bossChanceBosses, False, maxCreatureSize, expectedDifficulty, diffStrictness, creatureId, True)
 
                                     if (self.validNew[newChar][NewCol.TYPE.value] == "1" and not newChar in self.currentBosses):
                                         self.currentBosses.append(newChar)
@@ -1595,11 +1594,11 @@ class Randomizer:
                                 if (fitMode == 2):
                                     maxCreatureSize = int(creatureSize)
                                 if (npcMode == 1):     #replace with bosses only
-                                    newChar = self.GetBossEnemy(2, inFile, True, maxCreatureSize, expectedDifficulty, diffStrictness, lavaProof, creatureId, False)
+                                    newChar = self.GetBossEnemy(2, inFile, True, maxCreatureSize, expectedDifficulty, diffStrictness, creatureId, False)
                                 elif (npcMode == 2):   #replace with normals only
-                                    newChar = self.GetNormalEnemy(2, inFile, True, maxCreatureSize, expectedDifficulty, diffStrictness, lavaProof, creatureId)
+                                    newChar = self.GetNormalEnemy(2, inFile, True, maxCreatureSize, expectedDifficulty, diffStrictness, creatureId)
                                 elif (npcMode == 3):   #replace with both
-                                    newChar = self.GetNormalOrBossEnemy(2, inFile, bossChance, True, maxCreatureSize, expectedDifficulty, diffStrictness, lavaProof, creatureId)
+                                    newChar = self.GetNormalOrBossEnemy(2, inFile, bossChance, True, maxCreatureSize, expectedDifficulty, diffStrictness, creatureId)
 
                                 if ("c2640" in creatureId):                 # Special Andre -> Gwyndolin Replacement
                                     if (npcMode == 1 or npcMode == 3):
