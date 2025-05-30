@@ -980,7 +980,6 @@ class Randomizer:
                     return self.GetNormalEnemy(diffmode, mapname, careAboutLimit, maxSize, desiredDifficulty, diffStrictness, originalEnemyID)
             else:
                 newC = self.GetEnemyFromListWithRetry(self.uniqueBosses[maxSize], originalEnemyID)
-        if (
 
         if (diffmode >= 3 and mapname == "m18_01_00_00" and originalEnemyID in self.EASYASYLUM_TARGETS):
             newC = self.getRandomFromList(self.HARDCODED_ASYLUM_BOSSES)
