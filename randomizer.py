@@ -858,7 +858,7 @@ class MainWindow():
                                     self.tags[i] = "c"
                             elif (i == 19):
                                 if (self.moonReplace.get() == self.hoverL):
-                                    self.tags[i[ = "f"
+                                    self.tags[i] = "f"
                         else:
                             self.tags[i] = "uf"
 
