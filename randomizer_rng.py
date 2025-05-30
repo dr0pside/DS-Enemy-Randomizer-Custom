@@ -1536,12 +1536,12 @@ class Randomizer:
                             elif (enemyMode == 1):
                                 newChar = self.getRandomFromList(self.lavabosses)
                             elif (enemyMode == 2):
-                                newChar = self.getRandomFromList(self.lavanormal)
+                                newChar = self.getRandomFromList(self.lavaenemies)
                             elif (enemyMode == 3):
                                 if (randint(1, 100) <= bossChance):
                                     newChar = self.getRandomFromList(self.lavabosses)
                                 else:
-                                    newChar = self.getRandomFromList(self.lavanormal)
+                                    newChar = self.getRandomFromList(self.lavaenemies)
                         if (creatureId == "c5200_000"): #Centipede Boss
                             if (bossMode == 0):
                                 specialCase = True
