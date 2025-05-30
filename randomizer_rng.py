@@ -1548,12 +1548,12 @@ class Randomizer:
                             elif (bossMode == 1):
                                 newChar = self.getRandomFromList(self.lavabosses)
                             elif (bossMode == 2):
-                                newChar = self.getRandomFromList(self.lavanormal)
+                                newChar = self.getRandomFromList(self.lavaenemies)
                             elif (bossMode == 3):
                                 if (randint(1, 100) <= bossChance):
                                     newChar = self.getRandomFromList(self.lavabosses)
                                 else:
-                                    newChar = self.getRandomFromList(self.lavanormal)
+                                    newChar = self.getRandomFromList(self.lavaenemies)
 
                     if (self.isValid(creatureId) and not specialCase):
                         newChar = -1
