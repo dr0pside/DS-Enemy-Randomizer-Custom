@@ -1538,7 +1538,7 @@ class Randomizer:
                             elif (enemyMode == 2):
                                 newChar = self.getRandomFromList(self.lavanormal)
                             elif (enemyMode == 3):
-                                if (randint(1, 100) <= bosschance):
+                                if (randint(1, 100) <= bossChance):
                                     newChar = self.getRandomFromList(self.lavabosses)
                                 else:
                                     newChar = self.getRandomFromList(self.lavanormal)
@@ -1550,7 +1550,7 @@ class Randomizer:
                             elif (bossMode == 2):
                                 newChar = self.getRandomFromList(self.lavanormal)
                             elif (bossMode == 3):
-                                if (randint(1, 100) <= bosschance):
+                                if (randint(1, 100) <= bossChance):
                                     newChar = self.getRandomFromList(self.lavabosses)
                                 else:
                                     newChar = self.getRandomFromList(self.lavanormal)
