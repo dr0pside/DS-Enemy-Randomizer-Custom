@@ -1517,8 +1517,8 @@ class Randomizer:
                                         
                     #Lava enemies handling if Lava-proof mode enabled:
     
-                    lavabosses = ['c5200', 'c5280', 'c2430', 'c2250', 'c3421']
-                    lavaenemies = ['c2430', 'c3421']
+                    lavabosses = [105, 115, 23, 9, 81]
+                    lavaenemies = [23, 81]
                     lavaall = ['c5200', 'c5280', 'c2430', 'c2250', 'c3421', 'c2430', 'c3421']
                     lavapos = [
                         'c2250_0003', 'c2250_0004', 'c2250_0005', 'c2250_0006', 'c2250_0007', 'c2250_0008', 'c2250_0009',
