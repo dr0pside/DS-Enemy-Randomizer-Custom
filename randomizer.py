@@ -636,8 +636,8 @@ class MainWindow():
         self.lavaproofBtn2 = Radiobutton(self.lavaproof_frame, text="Disabled", variable=self.lavaProof, value=0, command=self.UpdateMessageArea)
         self.lavaproofBtn2.pack(anchor=W)
 
-        self.BindTags(self.lavaProofBtn1, 18, 1)
-        self.BindTags(self.lavaProofBtn2, 18, 0)
+        self.BindTags(self.lavaproofBtn1, 18, 1)
+        self.BindTags(self.lavaproofBtn2, 18, 0)
 
         # Moonlight Butterfly Handling
         
