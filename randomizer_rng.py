@@ -1534,26 +1534,26 @@ class Randomizer:
                             if (enemyMode == 0):
                                 specialCase = True
                             elif (enemyMode == 1):
-                                newChar = self.getRandomFromList(self.lavabosses)
+                                newChar = self.getRandomFromList(lavabosses)
                             elif (enemyMode == 2):
-                                newChar = self.getRandomFromList(self.lavaenemies)
+                                newChar = self.getRandomFromList(lavaenemies)
                             elif (enemyMode == 3):
                                 if (randint(1, 100) <= bossChance):
-                                    newChar = self.getRandomFromList(self.lavabosses)
+                                    newChar = self.getRandomFromList(lavabosses)
                                 else:
-                                    newChar = self.getRandomFromList(self.lavaenemies)
+                                    newChar = self.getRandomFromList(lavaenemies)
                         if (creatureId == "c5200_000"): #Centipede Boss
                             if (bossMode == 0):
                                 specialCase = True
                             elif (bossMode == 1):
-                                newChar = self.getRandomFromList(self.lavabosses)
+                                newChar = self.getRandomFromList(lavabosses)
                             elif (bossMode == 2):
-                                newChar = self.getRandomFromList(self.lavaenemies)
+                                newChar = self.getRandomFromList(lavaenemies)
                             elif (bossMode == 3):
                                 if (randint(1, 100) <= bossChance):
-                                    newChar = self.getRandomFromList(self.lavabosses)
+                                    newChar = self.getRandomFromList(lavabosses)
                                 else:
-                                    newChar = self.getRandomFromList(self.lavaenemies)
+                                    newChar = self.getRandomFromList(lavaenemies)
 
                     if (self.isValid(creatureId) and not specialCase):
                         newChar = -1
