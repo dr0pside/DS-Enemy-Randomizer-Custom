@@ -7,7 +7,7 @@ BUGS FIXED:
 - Lesser Sentinels now spawn in place of the non-aggresive bugged Royal Sentinels
 
 BALANCE CHANGES:
-- Only lava-proof enemies/bosses can spawn in the lava in Demon Ruins and Lost Izalith (basically you will have demonic statues everywhere unless you enable the dragon butts, but you won't get random free souls anymore)
+- Only lava-proof enemies/bosses can spawn in the lava in Demon Ruins and Lost Izalith (basically you will have demonic statues and dragon butts everywhere there's lava, but you won't get random free souls anymore)
 - Only lava-proof bosses can spawn in the Centipede Demon arena to prevent insta-wins (so you'll fight him, Quelaag or Taurus Demon)
 - Black Knight ghosts in the Kiln don't get replaced anymore (other enemies and bosses would fall to their deaths instantly, which was basically an infinite souls glitch)
 
