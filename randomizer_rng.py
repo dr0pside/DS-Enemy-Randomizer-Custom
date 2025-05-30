@@ -1669,7 +1669,7 @@ class Randomizer:
                                         animLine = " >> changing idle anim from " + str(currentAnim) + " to " + newAnim + ";"
 
                             #lavaProof
-                            centipederef = ['c5200_0000', 'c5201_0000', 'c5201_0001', 'c5201_0002', 'c5201_0003', 'c5201_0004', 'c5202_0000', 'c5202_0001', 'c5202_0002', 'c5202_0003', 'c5202_0004'
+                            centipederef = ['c5200_0000', 'c5201_0000', 'c5201_0001', 'c5201_0002', 'c5201_0003', 'c5201_0004', 'c5202_0000', 'c5202_0001', 'c5202_0002', 'c5202_0003', 'c5202_0004']
                             if ("c2232" in creatureId and "c2232" in self.validNew[newChar][NewCol.ID.value]):
                                 changePos = False
                             if (lavaProof == 1):
