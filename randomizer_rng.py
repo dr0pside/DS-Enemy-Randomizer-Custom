@@ -78,6 +78,18 @@ class Randomizer:
     # Asylum easy mode is hardcoded for now
     HARDCODED_ASYLUM_NORMAL = [1, 4, 12, 16, 23, 24, 28, 29, 30, 62]
     HARDCODED_ASYLUM_BOSSES = [8, 9, 118]
+    # Lava Enemies:
+    lavabosses = ['c5200', 'c5280', 'c2430', 'c2250', 'c3421']
+    lavaenemies = ['c2430', 'c3421']
+    lavaall = ['c5200', 'c5280', 'c2430', 'c2250', 'c3421', 'c2430', 'c3421']
+    lavapos = [
+        'c2250_0003', 'c2250_0004', 'c2250_0005', 'c2250_0006', 'c2250_0007', 'c2250_0008', 'c2250_0009',
+        'c3421_0000', 'c3421_0001', 'c3421_0002', 'c3421_0003', 'c3421_0004', 'c3421_0005', 'c3421_0006',
+        'c3421_0007', 'c3421_0008', 'c3421_0009', 'c3421_0010', 'c3421_0011', 'c3421_0012', 'c3421_0013',
+        'c3421_0014', 'c3421_0015', 'c3421_0016', 'c3421_0017', 'c3421_0018', 'c3421_0019', 'c3421_0020',
+        'c3421_0021', 'c3421_0022', 'c3421_0023', 'c3421_0024', 'c3421_0025', 'c3421_0026', 'c3421_0027',
+        'c3421_0028'
+    ] #thanks chatGPT
 
     # Targets for Easy Asylum
     EASYASYLUM_TARGETS = ['c2232_0000', 'c2500_0000', 'c2500_0001', 'c2500_0002', 'c2500_0003', 'c2500_0005', 'c2500_0006', 'c2500_0007', 'c2500_0009', 'c2500_0010', 'c2500_0011', 'c2550_0000']
@@ -968,6 +980,7 @@ class Randomizer:
                     return self.GetNormalEnemy(diffmode, mapname, careAboutLimit, maxSize, desiredDifficulty, diffStrictness, originalEnemyID)
             else:
                 newC = self.GetEnemyFromListWithRetry(self.uniqueBosses[maxSize], originalEnemyID)
+        if (
 
         if (diffmode >= 3 and mapname == "m18_01_00_00" and originalEnemyID in self.EASYASYLUM_TARGETS):
             newC = self.getRandomFromList(self.HARDCODED_ASYLUM_BOSSES)
@@ -1179,20 +1192,6 @@ class Randomizer:
         if ('c2791' in oldID):
             return True   # Black Knight ghosts from the Kiln (if replaced then the new enemies just die)
                 
-        tauruslist = ['c2250_0003', 'c2250_0004', 'c2250_0005', 'c2250_0006', 'c2250_0007', 'c2250_0008', 'c2250_0009']
-        lavademonslist = ['c5200', 'c5280', 'c2430', 'c2250', 'c3421']
-        
-        if (oldID in tauruslist):
-            if (newID not in lavademonslist):
-                return True
-
-        if ('c5200' in oldID):
-            if (newID not in lavademonslist):
-                return True
-        if ('c3421' in oldID):
-            if (newID not in lavademonslist):
-                return True
-                
         if (self.easyAsylum):
             if ('c2230' in oldID):
                 if ('c5390' in newID):
@@ -1295,7 +1294,7 @@ class Randomizer:
 
         if (self.check()):
             # Get settings
-            progressBar, progressLabel, versionString, bossMode, enemyMode, npcMode, mimicMode, fitMode, diffMode, replaceChance, bossChance, bossChanceBosses, gargoyleMode, diffStrictness, tposeCity, bossSoulDrops, chaosPinwheel, typeReplacement, gwynNerf, preventSame, uniqueBosses, respawningBosses, hostileNPC, mosquitoReplacement, seed, textConfig, enemyConfigName = settings
+            progressBar, progressLabel, versionString, bossMode, enemyMode, npcMode, mimicMode, fitMode, diffMode, replaceChance, bossChance, bossChanceBosses, gargoyleMode, diffStrictness, tposeCity, bossSoulDrops, chaosPinwheel, typeReplacement, gwynNerf, preventSame, uniqueBosses, respawningBosses, hostileNPC, mosquitoReplacement, lavaProof, moonReplace, seed, textConfig, enemyConfigName = settings
 
             self.gwynNerfMode = gwynNerf
             self.disallowSameReplacement = (preventSame == 0)
@@ -1303,6 +1302,8 @@ class Randomizer:
             disableRoamingBossRespawning = (respawningBosses == 1)
             self.spawnNPCS = (hostileNPC == 1)
             disableRespawningMosquitoes = (mosquitoReplacement == 0)
+            disableLavaProof = (lavaProof == 0)
+            disableMoonReplace = (moonReplace == 0)
             self.easyAsylum = (diffMode >= 3)
 
             # Generate a seed if none is provided.
@@ -1365,6 +1366,7 @@ class Randomizer:
             printLog("Mimic Replacement: {0}; Gargoyle #2 Replacement: {1}; Pinwheel Chaos: {2}".format(mimicMode, gargoyleMode, chaosPinwheel), logFile)
             printLog("Roaming Boss Soul Drops: {0}%; Gwyn Spawn Rate Nerf: {1}; Attempt Unique Bosses: {2}".format(bossSoulDrops, gwynNerf, uniqueBosses), logFile)
             printLog("Disable Roaming Boss Respawning {0}; Spawn Hostile NPCs: {1}; Disable Respawning Mosquitoes: {2}".format(respawningBosses, hostileNPC, mosquitoReplacement), logFile)
+            printLog("Disable Lava Proof Enemies: {0}; Disable Moonlight Butterfly Replacement: {1}".format(lavaProof, moonReplace), logFile)
             printLog("Seed: '{0}'".format(seed), logFile)
             printLog("Max Unique: {0}".format(self.MAX_UNIQUE), logFile)
 
@@ -1522,6 +1524,38 @@ class Randomizer:
                         if (creatureId in ['c3090_0058', 'c3090_0059', 'c3090_0085', 'c3090_0086', 'c3090_0090', 'c3090_0091']):
                             specialCase = True
 
+                    if (moonReplace == 0):
+                        if ((inFile == "m12_00_00_00" or inFile == "m12_00_00_01") and "c3230_0000" in creatureId):
+                            specialCase = True
+                                        
+                    #Lava enemies handling if Lava-proof mode enabled:
+                    
+                    if (lavaProof == 1):
+                        if (creatureId in lavapos and creatureType == "0"):
+                            if (enemyMode == 0):
+                                specialCase = True
+                            elif (enemyMode == 1):
+                                newChar = self.getRandomFromList(self.lavabosses)
+                            elif (enemyMode == 2):
+                                newChar = self.getRandomFromList(self.lavanormal)
+                            elif (enemyMode == 3):
+                                if (randint(1, 100) <= bosschance):
+                                    newChar = self.getRandomFromList(self.lavabosses)
+                                else:
+                                    newChar = self.getRandomFromList(self.lavanormal)
+                        if (creatureId == "c5200_000"): #Centipede Boss
+                            if (bossMode == 0):
+                                specialCase = True
+                            elif (bossMode == 1):
+                                newChar = self.getRandomFromList(self.lavabosses)
+                            elif (bossMode == 2):
+                                newChar = self.getRandomFromList(self.lavanormal)
+                            elif (bossMode == 3):
+                                if (randint(1, 100) <= bosschance):
+                                    newChar = self.getRandomFromList(self.lavabosses)
+                                else:
+                                    newChar = self.getRandomFromList(self.lavanormal)
+
                     if (self.isValid(creatureId) and not specialCase):
                         newChar = -1
 
@@ -1571,7 +1605,7 @@ class Randomizer:
                                         newChar = self.GetNormalOrBossEnemy(diffMode, inFile, bossChance, True, maxCreatureSize, expectedDifficulty, diffStrictness, creatureId)
                                 else:
                                     newChar = -3
-
+                            
                             elif (creatureType == "1" and bossMode != 0):     #replacing boss (dont care about enemy limit so bosses _can_ be unique)
                                 if (bossMode == 1):     #replace with bosses only
                                     newChar = self.GetBossEnemy(diffMode, inFile, False, maxCreatureSize, expectedDifficulty, diffStrictness, creatureId, False, True)
