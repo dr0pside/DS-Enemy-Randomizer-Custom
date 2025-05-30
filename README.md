@@ -1,4 +1,4 @@
-# Dark Souls Enemy Randomizer 0.4.2
+# Dark Souls Enemy Randomizer 0.4.2.1
 
 Update of the original DS1 Enemy Randomizer to change some things and overall make it harder:
 
@@ -13,7 +13,9 @@ BALANCE CHANGES:
 - Souls gained from roaming bosses decreased from 50% to 25% of the original boss fight value (the vast majority of time they die from falling or bad spawns)
 
 MISCELLANEOUS:
-- Moonlight Butterfly will not get replaced regardless of settings (simply because most other bosses will fall off the bridge by themselves and never die as there is no killbox below)
+- Moonlight Butterfly will not get replaced by default (simply because most other bosses will fall off the bridge by themselves and never die as there is no killbox below).
+
+Lava-Proof enemy handling & Moonlight Butterfly changes can be toggled from inside the UI (Even More Options tab). Might add one for the soul multiplier in the future.
 
 # ORIGINAL DESCRIPTION:
 
