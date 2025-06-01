@@ -1185,6 +1185,9 @@ class Randomizer:
 
         if ('c2791' in oldID):
             return True   # Black Knight ghosts from the Kiln (if replaced then the new enemies just die)
+            
+        if (oldID == "c5390_0001"):
+            return True   # First of the Four Kings (any other boss spawns with invisible textures)
                 
         if (self.easyAsylum):
             if ('c2230' in oldID):
