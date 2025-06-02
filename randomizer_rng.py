@@ -220,7 +220,6 @@ class Randomizer:
         self.currentBosses = []
         self.spawnNPCS = False
         self.easyAsylum = False
-        self.moonReplace = 1
 
         self.missingMSB = 0
         self.missingLUABND = 0
@@ -1199,10 +1198,6 @@ class Randomizer:
             if ('c4100' in newID):      # Artorias crashes the game (not added by me but worth commenting)
                 return True
 
-        if (self.moonReplace == 1):     # Moonlight Butterfly fix
-            if ('c3230' in oldID):
-                return True
-
         # When type replacement is enabled, avoid replacing multiple enemy types in one area with the same enemy
         if (self.typeSub):
             for key in self.typeReplaceMap:
@@ -1470,6 +1465,9 @@ class Randomizer:
                             changePos = True
                             newPos = (10.69, 48.92, 124.35)
                             newRot = (0.00, 1.84, 0.00)
+                    elif ((inFile == "m12_00_00_00" or inFile == "m12_00_00_01") and "c3230_0000" in creatureId):     # Moonlight Butterfly boss
+                        if (moonReplace == 1):
+                            specialCase = True
                     elif (inFile == "m14_01_00_00" and "c5250_0000" in creatureId):     # Cheesless Discharge
                         changePos = True
                         newPos = (396.14, -278.14, 74.56)
