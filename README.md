@@ -6,6 +6,7 @@ BUGS FIXED:
 - No more Seath or Kalameet in Nito's arena (Seath gets stuck in the ceiling and is unkillable, Kalameet is just extremely unfun and RNG-heavy as he can one-shot you through the pillar and you have the skeletons coming after you)
 - Lesser Sentinels now spawn in place of the non-aggresive bugged Royal Sentinels
 - The first of the Four Kings won't be replaced anymore as any other boss/enemy that took its place would be invisible on first spawn (far from ideal solution but after 1 day of debugging I couldn't find the reason for the bug).
+- No more weird model mismatches in Darkroot Garden & Basin
 
 BALANCE CHANGES:
 - Only lava-proof enemies/bosses can spawn in the lava in Demon Ruins and Lost Izalith (basically you will have demonic statues and dragon butts everywhere there's lava, but you won't get random free souls anymore)
