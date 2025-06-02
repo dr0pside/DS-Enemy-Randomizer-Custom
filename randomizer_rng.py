@@ -1271,10 +1271,10 @@ class Randomizer:
             if (i >= rowCount):
                 self.msbio.parts[2].rows[i][PARTSIDX_DATA_COL] = refMsb.parts[2].rows[i][PARTSIDX_DATA_COL]
 
-        #EVENTID = {1200801}
-        #for i in range(len(refMsb.parts[2].rows)):
-            #if self.msbio.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL] in EVENTID:
-                #self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL]
+        EVENTID = {1200801}     #Moonlight Butterfly model/param fix
+        for i in range(len(refMsb.parts[2].rows)):
+            if self.msbio.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL] in EVENTID:
+                self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL]
         
         self.msbio.save(self.MAPSTUDIO + "m12_00_00_01.msb")
     def randomize(self, settings, msgArea):
