@@ -43,7 +43,11 @@ class randomizationThread (threading.Thread):
         self.copyFilePath = copyFilePath
     def run(self):
         try:
-            if (self.copyFilePath == ""):
+            if (self.copyFilePath == "") and (self.BadComboG1 = True) and (self.BadComboG2 = True):
+                self.randomizer.randomize(self.rsettings, self.msgArea)
+                tkinter.messagebox.showinfo("Randomization complete", "Randomization completed successfully. \n\nLog saved to 'enemyRandomizerData/logs/rlog" + self.timeString + ".txt'\n\nEnemy placement reference saved to 'enemyRandomizerData/refs/enemy-layout-" + self.timeString + ".txt'")
+                tkinter.messagebox.showinfo("There is an EXTREMELY hard Gargoyle combo fight. \n\nI suggest you run the randomizer again.")
+            elif (self.copyFilePath == "") and not ((self.BadComboG1 = True) and (self.BadComboG2 = True)):
                 self.randomizer.randomize(self.rsettings, self.msgArea)
                 tkinter.messagebox.showinfo("Randomization complete", "Randomization completed successfully. \n\nLog saved to 'enemyRandomizerData/logs/rlog" + self.timeString + ".txt'\n\nEnemy placement reference saved to 'enemyRandomizerData/refs/enemy-layout-" + self.timeString + ".txt'")
             else:
