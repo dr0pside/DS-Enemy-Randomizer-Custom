@@ -1275,7 +1275,13 @@ class Randomizer:
         for i in range(len(refMsb.parts[2].rows)):
             if self.msbio.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL] in EVENTID:
                 self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL]
-        
+
+        MODEL_SKIP = {133, 134, 136, 137, 138, 139, 140, 141, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 157} #Darkroot enemy model IDs stay the same if not randomized (except Sif, big cats & Alvina)
+
+        for i in range(len(refMsb.parts[2].rows)): 
+            if (refMsb.parts[2].rows[i][MODEL_DATA_COL] in MODEL_SKIP):
+                self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL]
+
         self.msbio.save(self.MAPSTUDIO + "m12_00_00_01.msb")
     def randomize(self, settings, msgArea):
         """
