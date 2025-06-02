@@ -220,6 +220,8 @@ class Randomizer:
         self.currentBosses = []
         self.spawnNPCS = False
         self.easyAsylum = False
+        self.BadComboG1 = False
+        self.BadComboG2 = False
 
         self.missingMSB = 0
         self.missingLUABND = 0
@@ -690,6 +692,15 @@ class Randomizer:
                         s4 = " !!! SFX FILE NOT FOUND"
             printLog(j[1] + " - " + self.namesAll[j[0]] + " - offset: " + str(self.startIndicesAll[j[0]]) + s + s2 + s3 + s4, logFile)
         return passedCheck
+
+    def invalidCombo (self, s):
+        """
+        Highly unfair boss gank check.
+        """
+        for valid in self.invalidCombos:
+            if (valid[0] in s):
+                return True
+        return False
 
     def isValid(self, s):
         """
@@ -1525,7 +1536,13 @@ class Randomizer:
                         specialCase = True
                     if ("c2232" in creatureId and "c2232" in self.validNew[newChar][NewCol.ID.value]):
                          changePos = False
-    
+                    #Gargoyle 1 bad combo flag:
+                    if (creatureId == "c5350_0000" and "c4100" in self.validNew[newChar][NewCol.ID.value]):
+                        BadComboG1 = True
+                    #Gargoyle 2 bad combo flag:
+                    if (creatureId == "c5350_0001" and "c3471" in self.validNew[newChar][NewCol.ID.value]):
+                        BadComboG2 = True
+                    
                     if (disableRespawningMosquitoes):
                         if (creatureId in ['c3090_0058', 'c3090_0059', 'c3090_0085', 'c3090_0086', 'c3090_0090', 'c3090_0091']):
                             specialCase = True
@@ -2157,7 +2174,6 @@ class Randomizer:
                 i += 1
 
             self.copyDarkrootGarden()
-
             msgArea.insert(END,  "Randomization complete\n")
             msgArea.config(state = "disabled")
 
