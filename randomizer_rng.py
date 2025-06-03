@@ -1630,30 +1630,48 @@ class Randomizer:
                         else:
                             newChar = -2
 
-                                                    #lavaProof
+                #Lavaproof enemy logic
                         centipederef = ['c5200_0000', 'c5201_0000', 'c5201_0001', 'c5201_0002', 'c5201_0003', 'c5201_0004', 'c5202_0000', 'c5202_0001', 'c5202_0002', 'c5202_0003', 'c5202_0004']
 
                         if (lavaProof == 1):
                             if (creatureId in self.lavapos):
                                 if (enemyMode == 1):
-                                    newChar = random.choice(self.lavabosses)
-                                if (enemyMode == 2):
-                                    newChar = random.choice(self.lavaenemies)
-                                if (enemyMode == 3):
-                                    if (randint(1,100) <= bossChance):
+                                    if (randint(1,100) <= replaceChance):
                                         newChar = random.choice(self.lavabosses)
                                     else:
+                                        newChar = -2
+                                if (enemyMode == 2):
+                                    if (randint(1,100) <= replaceChance):
                                         newChar = random.choice(self.lavaenemies)
+                                    else:
+                                        newChar = -2
+                                if (enemyMode == 3):
+                                    if (randint(1,100) <= replaceChance):
+                                        if (randint(1,100) <= bossChance):
+                                            newChar = random.choice(self.lavabosses)
+                                        else:
+                                            newChar = random.choice(self.lavaenemies)
+                                    else:
+                                        newChar = -2
                             if (creatureId in centipederef):
                                 if (bossMode == 1):
-                                    newChar = random.choice(self.lavabosses)
-                                if (bossMode == 2):
-                                    newChar = random.choice(self.lavaenemies)
-                                if (bossMode == 3):
-                                    if (randint(1,100) <= bossChance):
+                                    if (randint(1,100) <= replaceChance):
                                         newChar = random.choice(self.lavabosses)
                                     else:
+                                        newChar = -2
+                                if (bossMode == 2):
+                                    if (randint(1,100) <= replaceChance):
                                         newChar = random.choice(self.lavaenemies)
+                                    else:
+                                        newChar = -2
+                                if (bossMode == 3):
+                                    if (randint(1,100) <= replaceChance):
+                                        if (randint(1,100) <= bossChance):
+                                            newChar = random.choice(self.lavabosses)
+                                        else:
+                                            newChar = random.choice(self.lavaenemies)
+                                    else:
+                                        newChar = -2
 
                         if (self.typeSub and creatureTypeId in self.typeReplaceMap and creatureType != "1"):
                             if (self.typeExceptBosses):
