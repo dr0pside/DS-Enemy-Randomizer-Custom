@@ -83,7 +83,8 @@ class Randomizer:
     EASYASYLUM_TARGETS = ['c2232_0000', 'c2500_0000', 'c2500_0001', 'c2500_0002', 'c2500_0003', 'c2500_0005', 'c2500_0006', 'c2500_0007', 'c2500_0009', 'c2500_0010', 'c2500_0011', 'c2550_0000']
 
     lavabosses = [105, 115, 23, 9, 81] #taurus, capra, quelaag, centipede + someone I honestly forgot about (not ceaseless)
-    lavaenemies = [23] #only the statue is here for now because enemies not in lavapos (the egg carriers near the bonfire) can end up replaced for some reason as well and I don't want dragon butts
+    lavaenemies = [23] #id for dragon butts is 81 but only the statue is here
+                       #for now because enemies not in lavapos (the egg carriers near the bonfire) can end up replaced for some reason as well and I don't want dragon butts
     lavaall = ['c5200', 'c5280', 'c2430', 'c2250', 'c3421', 'c2430', 'c3421']
     lavapos = ['c2250_0003', 'c2250_0004', 'c2250_0005', 'c2250_0006', 'c2250_0007', 'c2250_0008', 'c2250_0009', 'c3421_0000', 'c3421_0001', 'c3421_0002', 'c3421_0003', 'c3421_0004', 'c3421_0005', 'c3421_0006', 'c3421_0007', 'c3421_0008', 'c3421_0009', 'c3421_0010', 'c3421_0011', 'c3421_0012', 'c3421_0013', 'c3421_0014', 'c3421_0015', 'c3421_0016', 'c3421_0017', 'c3421_0018', 'c3421_0019', 'c3421_0020', 'c3421_0021', 'c3421_0022', 'c3421_0023', 'c3421_0024', 'c3421_0025', 'c3421_0026', 'c3421_0027', 'c3421_0028'] #good use of ai
     
@@ -1282,7 +1283,7 @@ class Randomizer:
             if (i >= rowCount):
                 self.msbio.parts[2].rows[i][PARTSIDX_DATA_COL] = refMsb.parts[2].rows[i][PARTSIDX_DATA_COL]
 
-        EVENTID = {1200801}     #Moonlight Butterfly model/param fix
+        EVENTID = {1200801}     #Moonlight Butterfly model/param fix (redundant but for some reason MLB gets replaced with a tree without these lines)
         for i in range(len(refMsb.parts[2].rows)):
             if self.msbio.parts[2].rows[i][EVENT_ENTITY_ID_DATA_COL] in EVENTID:
                 self.msbio.parts[2].rows[i][MODEL_DATA_COL] = refMsb.parts[2].rows[i][MODEL_DATA_COL]
