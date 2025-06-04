@@ -1729,7 +1729,42 @@ class Randomizer:
                                 luabnd.addAuto(aiEntry.logic_script)
 
                             if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in [287000, 287010]: #sentinel param fix pt. 2
-                                self.msbio.parts[2].rows[rowIndex][NPC_AI_DATA_COL] = 287000
+                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 287000
+
+                            nitoskellyIDs = ['c2900_0000', 'c2900_0001', 'c2900_0002', 'c2910_0019', 'c2910_0020', 'c2910_0021']
+
+                            if (creatureId not in nitoskellyIDs and inFile == "m13_01_00_00"): #hardcode more skeleton params 
+                            
+                                skellies = [290000, 290001, 290002, 290010, 290011, 290012, 290013, 290014, 290020, 290021, 290022, 290030, 290031, 290032]
+                                swordskellies = [290000, 290002, 290010, 290012, 290013, 290014, 290020, 290022, 290030, 290032]
+                                bowskellies = [290001, 290011, 2290021, 290031]
+                                swordskelliesai = [290000, 290002]
+
+                                if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in [290000, 290002]: 
+                                    self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(skellies)
+
+                                if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in swordskellies:
+                                    self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = random.choice(swordskelliesai)
+
+                                if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in bowskellies:
+                                    self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 290001
+
+                                #big skellies 
+                                bigskellies = [291000, 291001, 291002, 291010, 291011, 291012, 291013, 291014, 291015]
+                                bigswordskellies = [291000, 291002, 291011, 291012, 291014, 291015]
+                                bigbowskellies = [291001, 291010, 291013]
+                                swordskelliesai = [290000, 290002]
+
+                                if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 291000: 
+                                    self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(bigskellies)
+
+                                if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in bigswordskellies:
+                                    self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 291002
+
+                                if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in bigbowskellies:
+                                    self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 291001
+
+                            
 
                             # Change assigned animation if T-Posing is off.
                             animLine = ""
@@ -1809,7 +1844,7 @@ class Randomizer:
                                     currentEventEntityID += 1
 
                                     tailRow[PARAM_DATA_COL] = self.TAIL_VALUES[self.validNew[newChar][NewCol.ID.value]][1]
-                                    tailRow[_COL] = 1
+                                    tailRow[NPCAI_DATA_COL] = 1
 
                                     self.msbio.AddCreatureRow(tailRow)
 
