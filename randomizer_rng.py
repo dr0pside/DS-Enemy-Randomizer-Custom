@@ -1705,8 +1705,8 @@ class Randomizer:
                                 newAiParamIndex = randint(0, len(self.validNew[newChar][NewCol.AI.value]) - 1)
                                 newAI = self.validNew[newChar][NewCol.AI.value][newAiParamIndex]
                                 newParam = self.validNew[newChar][NewCol.PARAM.value][newAiParamIndex]
-                            if str(newAI) == "287001": #Sentinel param fix
-                                newAI == "287000"
+                                
+                            if str(newAI) == "287001": #Sentinel param fix pt. 1
                                 newParam = "287010"
                                 
                             paramValue = int(newParam)
@@ -1727,6 +1727,9 @@ class Randomizer:
                                 luagnl.AddEntriesAuto(aiEntry.aiFuncsGnl)
                                 luabnd.addAuto(aiEntry.battle_script)
                                 luabnd.addAuto(aiEntry.logic_script)
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in [287000, 287010]: #sentinel param fix pt. 2
+                                self.msbio.parts[2].rows[rowIndex][NPC_AI_DATA_COL] = 287000
 
                             # Change assigned animation if T-Posing is off.
                             animLine = ""
@@ -1806,7 +1809,7 @@ class Randomizer:
                                     currentEventEntityID += 1
 
                                     tailRow[PARAM_DATA_COL] = self.TAIL_VALUES[self.validNew[newChar][NewCol.ID.value]][1]
-                                    tailRow[NPCAI_DATA_COL] = 1
+                                    tailRow[_COL] = 1
 
                                     self.msbio.AddCreatureRow(tailRow)
 
@@ -1879,7 +1882,7 @@ class Randomizer:
         NAME_DATA_COL = 25
 
         MODEL_DATA_COL = 3
-        NPCAI_DATA_COL = 38
+        _COL = 38
         PARAM_DATA_COL = 39
 
         EVENT_ENTITY_ID_DATA_COL = 27
@@ -1890,7 +1893,7 @@ class Randomizer:
         outString = row[NAME_DATA_COL] + "\t"
         outString += "{0}\t{1}\t{2}\t".format(row[POS_DATA_COL], row[POS_DATA_COL + 1], row[POS_DATA_COL + 2])
         outString += "{0}\t{1}\t{2}\t".format(row[POS_DATA_COL + 3], row[POS_DATA_COL + 4], row[POS_DATA_COL + 5])
-        outString += "{0}\t{1}\t{2}\t".format(row[MODEL_DATA_COL], row[NPCAI_DATA_COL], row[PARAM_DATA_COL])
+        outString += "{0}\t{1}\t{2}\t".format(row[MODEL_DATA_COL], row[_COL], row[PARAM_DATA_COL])
         outString += "{0}\t{1}".format(row[EVENT_ENTITY_ID_DATA_COL], row[ANIMID_DATA_COL])
         
         refFile.write(outString + "\n")
@@ -1989,7 +1992,7 @@ class Randomizer:
             eventTools = EventTools(self.useDCX)
 
             MODEL_DATA_COL = 3
-            NPCAI_DATA_COL = 38
+            _COL = 38
             PARAM_DATA_COL = 39
 
             EVENT_ENTITY_ID_DATA_COL = 27
