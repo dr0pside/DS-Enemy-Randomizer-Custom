@@ -1733,7 +1733,7 @@ class Randomizer:
 
                             nitoskellyIDs = ['c2900_0000', 'c2900_0001', 'c2900_0002', 'c2910_0019', 'c2910_0020', 'c2910_0021']
 
-                            if (creatureId not in nitoskellyIDs and inFile == "m13_01_00_00"): #hardcode more skeleton params 
+                            if (creatureId not in nitoskellyIDs and not inFile == "m13_01_00_00"): #hardcode more skeleton params 
                             
                                 skellies = [290000, 290001, 290002, 290010, 290011, 290012, 290013, 290014, 290020, 290021, 290022, 290030, 290031, 290032]
                                 swordskellies = [290000, 290002, 290010, 290012, 290013, 290014, 290020, 290022, 290030, 290032]
