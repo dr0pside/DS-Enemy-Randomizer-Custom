@@ -1706,7 +1706,7 @@ class Randomizer:
                                 newAI = self.validNew[newChar][NewCol.AI.value][newAiParamIndex]
                                 newParam = self.validNew[newChar][NewCol.PARAM.value][newAiParamIndex]
                             if str(newAI) == "287001": #Sentinel param fix
-                                newAI == "28700"
+                                newAI == "287000"
                                 newParam = "287010"
                                 
                             paramValue = int(newParam)
