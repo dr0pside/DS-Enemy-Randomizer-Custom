@@ -1728,9 +1728,6 @@ class Randomizer:
                                 luabnd.addAuto(aiEntry.battle_script)
                                 luabnd.addAuto(aiEntry.logic_script)
 
-                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in [287000, 287010]: #sentinel param fix pt. 2
-                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 287000
-
                             nitoskellyIDs = ['c2900_0000', 'c2900_0001', 'c2900_0002', 'c2910_0019', 'c2910_0020', 'c2910_0021']
 
                             if (creatureId not in nitoskellyIDs and not inFile == "m13_01_00_00"): #hardcode more non-immortal skeleton params
