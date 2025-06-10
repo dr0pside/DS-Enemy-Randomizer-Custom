@@ -1924,7 +1924,7 @@ class Randomizer:
         NAME_DATA_COL = 25
 
         MODEL_DATA_COL = 3
-        _COL = 38
+        NPCAI_DATA_COL = 38
         PARAM_DATA_COL = 39
 
         EVENT_ENTITY_ID_DATA_COL = 27
@@ -2034,7 +2034,7 @@ class Randomizer:
             eventTools = EventTools(self.useDCX)
 
             MODEL_DATA_COL = 3
-            _COL = 38
+            NPCAI_DATA_COL = 38
             PARAM_DATA_COL = 39
 
             EVENT_ENTITY_ID_DATA_COL = 27
