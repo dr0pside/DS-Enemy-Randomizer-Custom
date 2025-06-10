@@ -1935,7 +1935,7 @@ class Randomizer:
         outString = row[NAME_DATA_COL] + "\t"
         outString += "{0}\t{1}\t{2}\t".format(row[POS_DATA_COL], row[POS_DATA_COL + 1], row[POS_DATA_COL + 2])
         outString += "{0}\t{1}\t{2}\t".format(row[POS_DATA_COL + 3], row[POS_DATA_COL + 4], row[POS_DATA_COL + 5])
-        outString += "{0}\t{1}\t{2}\t".format(row[MODEL_DATA_COL], row[_COL], row[PARAM_DATA_COL])
+        outString += "{0}\t{1}\t{2}\t".format(row[MODEL_DATA_COL], row[NPCAI_DATA_COL], row[PARAM_DATA_COL])
         outString += "{0}\t{1}".format(row[EVENT_ENTITY_ID_DATA_COL], row[ANIMID_DATA_COL])
         
         refFile.write(outString + "\n")
