@@ -263,7 +263,7 @@ class NpcParam(ParamClass):
             if (self.param.Rows[i].id in self.ToRemoveItemLots):
                 self.data[i]['normal']['itemLotId_1'] = -1
                 
-    def ApplyLavaProof(self):
+    def ApplyLavaProof(self): #not used
         entryCount = len(self.data)
         expectedIndex = 0
         for i in range(entryCount):
