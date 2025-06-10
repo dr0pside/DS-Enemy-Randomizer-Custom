@@ -1732,8 +1732,8 @@ class Randomizer:
 
                             if (creatureId not in nitoskellyIDs and not inFile == "m13_01_00_00"): #hardcode more non-immortal skeleton params
                             
-                                skellies = [290000, 290001, 290002, 290010, 290011, 290012, 290013, 290014]
-                                swordskellies = [290000, 290002, 290010, 290012, 290013, 290014]
+                                skellies = [290000, 290001, 290002, 290010, 290011, 290012]
+                                swordskellies = [290000, 290002, 290010, 290012]
                                 bowskellies = [290001, 290011]
                                 swordskelliesai = [290000, 290002]
 
@@ -1747,8 +1747,8 @@ class Randomizer:
                                     self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 290001
 
                                 #big skellies 
-                                bigskellies = [291000, 291001, 291002, 291010, 291011, 291013, 291014, 291015]
-                                bigswordskellies = [291000, 291002, 291011, 291014, 291015]
+                                bigskellies = [291000, 291001, 291002, 291010, 291011, 291013, 291014]
+                                bigswordskellies = [291000, 291002, 291011, 291014]
                                 bigbowskellies = [291001, 291010, 291013]
 
                                 if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 291000: 
@@ -1759,6 +1759,17 @@ class Randomizer:
 
                                 if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in bigbowskellies:
                                     self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 291001
+
+                            #hardcode darkroot crystal golem params:
+
+                            crystalG = [271000, 271001]
+                            goldcrystalG = [271100, 271101]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 271000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == random.choice(crystalG)
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 271100:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == random.choice(goldcrystalG)
 
                             
 
