@@ -1772,6 +1772,12 @@ class Randomizer:
                                 self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == random.choice(goldcrystalG)
 
                             
+                            #hardcode depths/archives channeler params:
+
+                            channelers = [237000, 237001, 237002]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 237000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == random.choice(channelers)
 
                             # Change assigned animation if T-Posing is off.
                             animLine = ""
