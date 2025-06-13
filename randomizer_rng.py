@@ -1706,10 +1706,6 @@ class Randomizer:
                                 newAI = self.validNew[newChar][NewCol.AI.value][newAiParamIndex]
                                 newParam = self.validNew[newChar][NewCol.PARAM.value][newAiParamIndex]
                                 
-                            if str(newAI) == "287001": #Sentinel param fix pt. 1
-                                newParam = "287010"
-                                newAI = "287010"
-                                
                             paramValue = int(newParam)
                             if (creatureType == "0" and newChar in self.validNewBossIndices and (self.validNew[newChar][NewCol.ID.value] != 'c5351')):
                                 paramValue += 50
@@ -1780,6 +1776,12 @@ class Randomizer:
                             if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 237000:
                                 self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == random.choice(channelers)
 
+                            #hardcode sentinel fix:
+
+                            if self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] == 287001:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 287010
+                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] == 287011
+                            
                             # Change assigned animation if T-Posing is off.
                             animLine = ""
                             if (tposeCity == 1):
