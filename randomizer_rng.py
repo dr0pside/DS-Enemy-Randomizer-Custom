@@ -1708,7 +1708,7 @@ class Randomizer:
                                 
                             if str(newAI) == "287001": #Sentinel param fix pt. 1
                                 newParam = "287010"
-                                newAI = "287000"
+                                newAI = "287010"
                                 
                             paramValue = int(newParam)
                             if (creatureType == "0" and newChar in self.validNewBossIndices and (self.validNew[newChar][NewCol.ID.value] != 'c5351')):
