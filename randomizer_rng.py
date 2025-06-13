@@ -1763,10 +1763,10 @@ class Randomizer:
                             goldcrystalG = [271100, 271101]
 
                             if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 271000:
-                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == random.choice(crystalG)
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(crystalG)
 
                             if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 271100:
-                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == random.choice(goldcrystalG)
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(goldcrystalG)
 
                             
                             #hardcode depths/archives channeler params:
@@ -1774,13 +1774,13 @@ class Randomizer:
                             channelers = [237000, 237001, 237002]
 
                             if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 237000:
-                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == random.choice(channelers)
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(channelers)
 
                             #hardcode sentinel fix:
 
                             if self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] == 287001:
-                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 287010
-                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] == 287011
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = 287010
+                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 287011
                             
                             # Change assigned animation if T-Posing is off.
                             animLine = ""
