@@ -1781,6 +1781,144 @@ class Randomizer:
                             if self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] == 287001:
                                 self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = 287010
                                 self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 287011
+
+                            #hardcode more balder knight params:
+
+                            balderK = [256000, 256001, 256002]
+                            balderKall = [256000, 256001, 256002, 256010, 256011, 256012]
+                            balderKlongbow = [256000, 256010]
+                            balderKcrossbow = [256001, 256011]
+                            balderKrapier = [256002, 256012]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in balderK:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(balderKall)
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in balderKlongbow:
+                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 256000
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in balderKcrossbow:
+                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 256001
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in balderKrapier:
+                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 256002
+
+                            #hardcode more berenike knight params:
+
+                            berenikeK = [257000, 257001]
+                            berenikeKall = [257000, 257001, 257010, 257011, 257020, 257021]
+                            berenikeKsword = [257000, 257010, 257020]
+                            berenikeKmace = [257001, 257011, 257021]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in berenikeK:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(berenikeKall)
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in berenikeKsword:
+                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 257000
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in berenikeKmace:
+                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 257001
+
+                            #hardcode more manserpent params:
+
+                            serpentSword = [269000, 269002]
+                            serpentMage = [270000, 270001]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 269000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(serpentSword)
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 270000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(serpentMage)
+
+                            #hardcode more black knight params:
+
+                            blackK = [279000, 279001, 279020, 279030]
+                            blackKall = [279000, 279050, 279070, 279001, 279051, 279020, 279052, 279010, 279030, 279053]
+                            blackKGS = [279000, 279050, 279070]
+                            blackKUGS = [279001, 279051]
+                            blackKAxe = [279020, 279052]
+                            blackKHalberd = [279010, 279030, 279053]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in blackK:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(blackKall)
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in blackKGS:
+                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 279000
+                                
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in blackKUGS:
+                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 279001
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in blackKAxe:
+                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 279002
+                                
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] in blackKHalberd:
+                                self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = 279003
+
+                            #hardcode bonewheel painted world param:
+
+                            bonewheelAll = [293000, 293001]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 293000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(bonewheelAll)
+
+                            #hardcode clam great hollow param:
+
+                            clamAll = [325000, 325001]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 325000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(clamAll)
+
+                            #hardcode basilisk great hollow param:
+
+                            basiliskAll = [327000, 327001]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 327000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(basiliskAll)
+
+                            #hardcode undead dog params:
+
+                            dogAll = [334000, 334001, 334002, 334003]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 334000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(dogAll)
+
+                            #hardcode extra frog param:
+
+                            frogAll = [341000, 341001]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 341000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(frogAll)
+
+                            #hardcode extra scarecrow params:
+
+                            scarecrowAll = [413000, 413001, 413002, 413003, 413010, 413011, 413012]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 413000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(scarecrowAll)
+
+                            #hardcode extra small rat params:
+
+                            smallratAll = [120100, 120101, 120102, 120103]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 120100:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(smallratAll)
+
+                            #hardcode great hollow mushroom papa/baby params:
+
+                            mushroompapaAll = [227000, 227001]
+                            mushroombabyAll = [228000, 228001]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 227000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(mushroompapaAll)
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 228000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(mushroombabyAll)
+
+                            #hardcode extra stone knight param:
+
+                            stoneKAll = [238000, 238001]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 238000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(stoneKAll)
                             
                             # Change assigned animation if T-Posing is off.
                             animLine = ""
