@@ -1,20 +1,24 @@
-# Dark Souls Enemy Randomizer 0.4.2.2
+# Dark Souls Enemy Randomizer 0.4.3
 
 Update of the original DS1 Enemy Randomizer to change some things and overall make it harder:
 
 BUGS FIXED:
-- No more Seath or Kalameet in Nito's arena (Seath gets stuck in the ceiling and is unkillable, Kalameet is just extremely unfun and RNG-heavy as he can one-shot you through the pillar and you have the skeletons coming after you)
+- Seath cannot appear in Nito's arena anymore (would get stuck in the ceiling)
 - Lesser Sentinels now spawn in place of the non-aggresive bugged Royal Sentinels
-- The first of the Four Kings won't be replaced anymore as any other boss/enemy that took its place would be invisible on first spawn (far from ideal solution but after 1 day of debugging I couldn't find the reason for the bug).
-- No more weird model mismatches in Darkroot Garden & Basin
+- The first of the Four Kings won't be replaced anymore as any other boss/enemy that took its place would be invisible on first spawn (far from ideal solution but after 1 day of debugging I couldn't find the reason for the bug)
+- No more mismatches between models and AI in Darkroot Garden & Basin
+- Removed bugged giant sword skeletons who would constantly attack in place
 
 BALANCE CHANGES:
-- Only lava-proof enemies/bosses can spawn in the lava in Demon Ruins and Lost Izalith (basically you will have demonic statues and dragon butts everywhere there's lava, but you won't get random free souls anymore)
-- Only lava-proof bosses can spawn in the Centipede Demon arena to prevent insta-wins (so you'll fight him, Quelaag or Taurus Demon)
+- (Optional) Only demonic statues can spawn in the lava in Demon Ruins and Lost Izalith (no more free souls)
+- (Optional) Only lava-proof bosses can spawn in the Centipede Demon arena to prevent insta-wins (so you'll fight him, Quelaag, Capra or Taurus Demon)
 - Black Knight ghosts in the Kiln don't get replaced anymore (other enemies and bosses would fall to their deaths instantly, which was basically an infinite souls glitch)
+- Harder versions of regular enemies can now appear (e.g. you can get Sen's Fortress versions of the Balder Knights instead of only getting the Undead Parish versions). Enemies affected: Blue/Gold Crystal Golems, Channelers, Balder Knights, Berenike Knights, Manserpents (both Sword & Mage), Black Knights, Bonewheels, Clams, Basilisks, Undead Dogs, Frog-Rays, Small Rats, Mushroom Papas & Babies, Stone Knights.
+- Kalameet not appearing in Nito's arena anymore (extremely unfun and RNG-heavy as he can instakill you through the pillar while skellies gank you).
 
 MISCELLANEOUS:
-- Moonlight Butterfly will not get replaced by default (simply because most other bosses will fall off the bridge by themselves and never die as there is no killbox below).
+- (Optional) Moonlight Butterfly will not get replaced by default (simply because most other bosses will fall off the bridge by themselves and never die as there is no killbox below).
+- Added bow-wielding regular and giant skeletons as potential enemies.
 
 Lava-Proof enemy handling & Moonlight Butterfly changes can be toggled from inside the UI (Even More Options tab)
 
