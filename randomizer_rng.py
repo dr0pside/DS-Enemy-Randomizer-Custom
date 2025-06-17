@@ -1189,6 +1189,10 @@ class Randomizer:
             if ('c5290' in newID):      # Seath
                 return True
 
+        if ('c2231' in oldID):          # Firesage Demon
+            if ('c5290' in newID):      # Seath
+                return True
+
         if ('c5220' in oldID):          # Nito
             if ('c5290' in newID):      # Seath (gets stuck in ceiling)
                 return True
