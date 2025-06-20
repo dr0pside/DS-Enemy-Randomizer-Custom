@@ -1544,15 +1544,13 @@ class Randomizer:
                          changePos = False
                     #Gargoyle bad combo flag:
                     if (creatureId == "c5350_0000" and "c4100" in self.validNew[newChar][NewCol.ID.value]) and (creatureId == "c5350_0001" and "c3471" in self.validNew[newChar][NewCol.ID.value]): #Garg1 = Artorias, Garg2 = Sanctuary Guardian
-                        self.BadComboGarg = True
+                        self.BadComboGarg = 1
                     #O&S bad combo flag:
                     if inFile == "m15_01_00_00": and creatureId in "c2360_0000" or creatureId in "c5270_0000":
                         if (creatureId in "c2360_0000" and "c4500" in self.validNew[newChar][NewCol.ID.value]) and (creatureId in "c5270_0000" and "c4510" in self.validNew[newChar][NewCol.ID.value]): #Manus & Kalameet
-                            self.BadComboOS = True
+                            self.BadComboOS = 1
                         elif (creatureId in "c2360_0000" and "c4510" in self.validNew[newChar][NewCol.ID.value]) and (creatureId in "c5270_0000" and "c4500" in self.validNew[newChar][NewCol.ID.value]): #ditto
-                            self.BadComboOS = True
-                        else:
-                            self.BadComboOS = False
+                            self.BadComboOS = 1
 
                     if (disableRespawningMosquitoes):
                         if (creatureId in ['c3090_0058', 'c3090_0059', 'c3090_0085', 'c3090_0086', 'c3090_0090', 'c3090_0091']):
