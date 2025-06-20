@@ -221,8 +221,9 @@ class Randomizer:
         self.currentBosses = []
         self.spawnNPCS = False
         self.easyAsylum = False
-        self.BadComboGarg = False
-        self.BadComboOS = False
+        
+        self.BadComboGarg = 0
+        self.BadComboOS = 0
 
         self.missingMSB = 0
         self.missingLUABND = 0
