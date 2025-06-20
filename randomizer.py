@@ -44,16 +44,16 @@ class randomizationThread (threading.Thread):
         
     def run(self):
         try:
-            if (self.copyFilePath == "") and (self.randomizer.BadComboG1 == "True") and (self.randomizer.BadComboG2 == "True"):
+            if (self.copyFilePath == ""):
                 self.randomizer.randomize(self.rsettings, self.msgArea)
                 tkinter.messagebox.showinfo("Randomization complete", "Randomization completed successfully. \n\nLog saved to 'enemyRandomizerData/logs/rlog" + self.timeString + ".txt'\n\nEnemy placement reference saved to 'enemyRandomizerData/refs/enemy-layout-" + self.timeString + ".txt'")
-                tkinter.messagebox.showinfo("There is an EXTREMELY hard Gargoyle combo fight. \n\nI suggest you run the randomizer again.")
-            elif (self.copyFilePath == "") and not ((self.randomizer.BadComboG1 == "True") and (self.randomizer.BadComboG2 == "True")):
-                self.randomizer.randomize(self.rsettings, self.msgArea)
-                tkinter.messagebox.showinfo("Randomization complete", "Randomization completed successfully. \n\nLog saved to 'enemyRandomizerData/logs/rlog" + self.timeString + ".txt'\n\nEnemy placement reference saved to 'enemyRandomizerData/refs/enemy-layout-" + self.timeString + ".txt'")
-            else:
-                self.randomizer.CopyFromReference(self.rsettings, self.msgArea, self.copyFilePath)
-                tkinter.messagebox.showinfo("Enemy copy complete", "Enemy placement was successfully copied from the reference.")
+                if ((self.randomizer.BadComboGarg = True) and (self.randomizer.BadComboOS = False)):
+                    tkinter.messagebox.showinfo("There is an EXTREMELY hard Gargoyle fight. \n\nI suggest you run the randomizer again.")
+                elif ((self.randomizer.BadComboGarg = False) and (self.randomizer.BadComboOS = True)):
+                    tkinter.messagebox.showinfo("There is an EXTREMELY hard O&S fight. \n\nI suggest you run the randomizer again.")
+                elif ((self.randomizer.BadComboGarg = True) and (self.randomizer.BadComboOS = True)):
+                    tkinter.messagebox.showinfo("Gargoyle and O&S fights will be EXTREMELY hard. \n\nI suggest you run the randomizer again.")
+                
         except Exception as e:
             if (self.copyFilePath == ""):
                 tkinter.messagebox.showerror("Something went very wrong.", "The randomizer has run into an exception:\n'" + str(e) + "'\nTraceback in the console.")
