@@ -47,11 +47,11 @@ class randomizationThread (threading.Thread):
             if (self.copyFilePath == ""):
                 self.randomizer.randomize(self.rsettings, self.msgArea)
                 tkinter.messagebox.showinfo("Randomization complete", "Randomization completed successfully. \n\nLog saved to 'enemyRandomizerData/logs/rlog" + self.timeString + ".txt'\n\nEnemy placement reference saved to 'enemyRandomizerData/refs/enemy-layout-" + self.timeString + ".txt'")
-                if ((self.randomizer.BadComboGarg = True) and (self.randomizer.BadComboOS = False)):
+                if ((self.randomizer.BadComboGarg == 1) and (self.randomizer.BadComboOS == 0)):
                     tkinter.messagebox.showinfo("There is an EXTREMELY hard Gargoyle fight. \n\nI suggest you run the randomizer again.")
-                elif ((self.randomizer.BadComboGarg = False) and (self.randomizer.BadComboOS = True)):
+                elif ((self.randomizer.BadComboGarg == 0) and (self.randomizer.BadComboOS == 1)):
                     tkinter.messagebox.showinfo("There is an EXTREMELY hard O&S fight. \n\nI suggest you run the randomizer again.")
-                elif ((self.randomizer.BadComboGarg = True) and (self.randomizer.BadComboOS = True)):
+                elif ((self.randomizer.BadComboGarg == 1) and (self.randomizer.BadComboOS == 1)):
                     tkinter.messagebox.showinfo("Gargoyle and O&S fights will be EXTREMELY hard. \n\nI suggest you run the randomizer again.")
                 
         except Exception as e:
