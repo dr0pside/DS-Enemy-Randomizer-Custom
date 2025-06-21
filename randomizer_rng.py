@@ -1551,6 +1551,10 @@ class Randomizer:
                             self.BadComboOS = 1
                         elif (creatureId in "c2360_0000" and "c4510" in self.validNew[newChar][NewCol.ID.value]) and (creatureId in "c5270_0000" and "c4500" in self.validNew[newChar][NewCol.ID.value]): #ditto
                             self.BadComboOS = 1
+                        elif (creatureId in "c2360_0000" and "c4500" in self.validNew[newChar][NewCol.ID.value]) and (creatureId in "c5270_0000" and "c5271" in self.validNew[newChar][NewCol.ID.value]): #Manus & Super Ornstein
+                            self.BadComboOS = 1
+                        elif (creatureId in "c2360_0000" and "c5271" in self.validNew[newChar][NewCol.ID.value]) and (creatureId in "c5270_0000" and "c4500" in self.validNew[newChar][NewCol.ID.value]): #ditto
+                            self.BadComboOS = 1
 
                     if (disableRespawningMosquitoes):
                         if (creatureId in ['c3090_0058', 'c3090_0059', 'c3090_0085', 'c3090_0086', 'c3090_0090', 'c3090_0091']):
