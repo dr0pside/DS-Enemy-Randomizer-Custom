@@ -53,6 +53,9 @@ class randomizationThread (threading.Thread):
                     tkinter.messagebox.showinfo("There is an EXTREMELY hard O&S fight. \n\nI suggest you run the randomizer again.")
                 elif ((self.randomizer.BadComboGarg == 1) and (self.randomizer.BadComboOS == 1)):
                     tkinter.messagebox.showinfo("Gargoyle and O&S fights will be EXTREMELY hard. \n\nI suggest you run the randomizer again.")
+            else:
+                self.randomizer.CopyFromReference(self.rsettings, self.msgArea, self.copyFilePath)
+                tkinter.messagebox.showinfo("Enemy copy complete", "Enemy placement was successfully copied from the reference.")
                 
         except Exception as e:
             if (self.copyFilePath == ""):
