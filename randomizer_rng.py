@@ -82,7 +82,7 @@ class Randomizer:
     # Targets for Easy Asylum
     EASYASYLUM_TARGETS = ['c2232_0000', 'c2500_0000', 'c2500_0001', 'c2500_0002', 'c2500_0003', 'c2500_0005', 'c2500_0006', 'c2500_0007', 'c2500_0009', 'c2500_0010', 'c2500_0011', 'c2550_0000']
 
-    lavabosses = [105, 115, 9, 8] #taurus, capra, quelaag, centipede 
+    lavabosses = [105, 115, 9, 8] #centipede, quelaag, taurus, capra 
     lavaenemies = [23] #id for dragon butts is 81 but only the statue is here
                        #for now because the egg carriers near the bonfire can end up replaced for some reason as well with dragon butts if I include the id
     lavaall = ['c5200', 'c5280', 'c2430', 'c2250', 'c3421', 'c2430', 'c3421']
@@ -1737,6 +1737,9 @@ class Randomizer:
                                 luabnd.addAuto(aiEntry.battle_script)
                                 luabnd.addAuto(aiEntry.logic_script)
 
+                            if (creatureId == 'c5200_0000') and (self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 225000):  #make sure taurus demon is the fireproof version if he replaces centipede
+                                newParam = 225002
+                 
                             nitoskellyIDs = ['c2900_0000', 'c2900_0001', 'c2900_0002', 'c2910_0019', 'c2910_0020', 'c2910_0021']
 
                             if (creatureId not in nitoskellyIDs and not inFile == "m13_01_00_00"): #hardcode more non-immortal skeleton params
@@ -1931,8 +1934,15 @@ class Randomizer:
 
                             if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 238000:
                                 self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(stoneKAll)
+
+                            #hardcode extra demonic foliage param:
+
+                            foliageAll = [233000, 233001]
+
+                            if self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 233000:
+                                self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = random.choice(foliageAll)
                             
-                            # Change assigned animation if T-Posing is off.
+                            # Change assigned animation if T-osing is off.
                             animLine = ""
                             if (tposeCity == 1):
                                 if (creatureType != "2"):
