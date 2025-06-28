@@ -3,8 +3,8 @@
 Update of the original DS1 Enemy Randomizer to change some things and overall make it harder:
 
 BUGS FIXED:
-- Seath cannot appear in Nito's arena anymore (gets stuck in the ceiling and is only barely killable via ranged attacks)
-- Lesser Sentinels now spawn in place of the non-aggresive bugged Royal Sentinels
+- Seath cannot replace Nito or Firesage Demon anymore (gets stuck in the ceiling and is only barely killable via ranged attacks)
+- Regular Sentinels now spawn in place of the non-aggresive bugged Royal Sentinels
 - The first of the Four Kings won't be replaced anymore as any other boss/enemy that took its place would be invisible on first spawn (far from ideal solution but after 1 day of debugging I couldn't find the reason for the bug)
 - No more mismatches between models and AI in Darkroot Garden & Basin
 - Removed bugged giant sword skeletons who would constantly attack in place
@@ -13,7 +13,7 @@ BALANCE CHANGES:
 - (Optional) Only demonic statues can spawn in the lava in Demon Ruins and Lost Izalith (no more free souls)
 - (Optional) Only lava-proof bosses can spawn in the Centipede Demon arena to prevent insta-wins (so you'll fight him, Quelaag, Capra or Taurus Demon)
 - Black Knight ghosts in the Kiln don't get replaced anymore (other enemies and bosses would fall to their deaths instantly, which was basically an infinite souls glitch)
-- Harder versions of regular enemies can now appear (e.g. you can get Sen's Fortress versions of the Balder Knights instead of only getting the Undead Parish versions). Enemies affected: Channelers, Balder Knights, Berenike Knights, Manserpents (both Sword & Mage), Black Knights, Bonewheels, Basilisks, Undead Dogs, Frog-Rays, Small Rats, Stone Knights.
+- Harder versions of regular enemies can now appear (e.g. you can get Sen's Fortress versions of the Balder Knights instead of only getting the Undead Parish versions). Enemies affected: Channelers, Balder Knights, Berenike Knights, Manserpents (both Sword & Mage), Black Knights, Bonewheels, Basilisks, Undead Dogs, Frog-Rays, Small Rats, Stone Knights, Demonic Foliage.
 - Easier versions of the following enemies can appear: Blue/Gold Crystal Golems, Clams, Mushroom Papas & Mushroom Babies.
 - Kalameet not eligible to appear in Nito's arena anymore (extremely unfun and RNG-heavy as he can instakill you through the pillar while skellies gank you).
 
