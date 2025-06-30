@@ -1743,6 +1743,12 @@ class Randomizer:
 
                             if (creatureId == 'c5200_0000') and (self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] == 225000):  #make sure taurus demon is the fireproof version if he replaces centipede
                                 newParam = 225002
+
+                            if (inFile == "m13_01_00_00" and creatureId == 'c5220_0000'): #pull nito boss model
+                                nitoModel = self.msbio.parts[2].rows[rowIndex][MODEL_DATA_COL]
+                                
+                            if (inFile == "m13_01_00_00" and creatureId == 'c5220_0001'): #assign nito boss model to the gravelord covenant NPC
+                                self.msbio.parts[2].rows[rowIndex][MODEL_DATA_COL] = nitoModel
                  
                             nitoskellyIDs = ['c2900_0000', 'c2900_0001', 'c2900_0002', 'c2910_0019', 'c2910_0020', 'c2910_0021']
 
