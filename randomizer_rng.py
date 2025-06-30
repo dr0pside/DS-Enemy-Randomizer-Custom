@@ -1172,7 +1172,7 @@ class Randomizer:
             elif ('c4510' in newID):    # Kalameet
                 return True
 
-        if ('c2320' in oldID):          # Iron Golem (Can get stuck floating)
+        if ('c2320' in oldID):          # Iron Golem (Dragons can get stuck floating, the rest are stuck in place which makes the encounter trivial for ranged chars)
             if ('c5290' in newID):      # Seath
                 return True
             elif ('c5260' in newID):    # Gaping
@@ -1507,6 +1507,10 @@ class Randomizer:
                         changePos = True
                         newPos = (-440.52, -411.72, 15.16)
                         newRot = (0.00, -144.53, 0.00)
+                    elif (inFile == "m15_00_00_00" and "c2320_0000" in creatureId):     # Iron Golem
+                        changePos = True
+                        newPos = (107.14, 83.00, 255.00)
+                        newRot = (0.00, 90.00, 0.00)
                     elif ("c5401_0000" in creatureId):          # BoC Parasite
                         changePos = True
                         newPos = (548.65, -437.23, 416.95)
