@@ -1748,7 +1748,8 @@ class Randomizer:
                                 nitoModel = self.msbio.parts[2].rows[rowIndex][MODEL_DATA_COL]
                                 
                             if (inFile == "m13_01_00_00" and creatureId == 'c5220_0001'): #assign nito boss model to the gravelord covenant NPC
-                                self.msbio.parts[2].rows[rowIndex][MODEL_DATA_COL] = nitoModel
+                                if nitoModel != None:
+                                    self.msbio.parts[2].rows[rowIndex][MODEL_DATA_COL] = nitoModel
                  
                             nitoskellyIDs = ['c2900_0000', 'c2900_0001', 'c2900_0002', 'c2910_0019', 'c2910_0020', 'c2910_0021']
 
