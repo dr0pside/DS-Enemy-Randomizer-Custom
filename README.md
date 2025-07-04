@@ -1,4 +1,4 @@
-# Dark Souls Enemy Randomizer 0.4.3
+# Dark Souls Enemy Randomizer 0.4.3.2
 
 Update of the original DS1 Enemy Randomizer to change some things and overall make it harder:
 
@@ -16,12 +16,14 @@ BALANCE CHANGES:
 - Harder versions of regular enemies can now appear (e.g. you can get Sen's Fortress versions of the Balder Knights instead of only getting the Undead Parish versions). Enemies affected: Channelers, Balder Knights, Berenike Knights, Manserpents (both Sword & Mage), Black Knights, Bonewheels, Basilisks, Undead Dogs, Frog-Rays, Small Rats, Stone Knights, Demonic Foliage.
 - Easier versions of the following enemies can appear: Blue/Gold Crystal Golems, Clams, Mushroom Papas & Mushroom Babies.
 - Kalameet not eligible to appear in Nito's arena anymore (extremely unfun and RNG-heavy as he can instakill you through the pillar while skellies gank you).
+- Sen's Fortress boss now appears in the center of the arena, as some bosses like Sif and Nito would to get stuck in place and become trivial to kill with the vanilla placement
 
 MISCELLANEOUS:
 - (Optional) Moonlight Butterfly will not get replaced by default (simply because most other bosses will fall off the bridge by themselves and never die as there is no killbox below).
 - Added bow-wielding regular and giant skeletons as potential enemies.
 - Added the shear-wielding scarecrow as a potential enemy.
 - Scarecrows can have one of a few model variations, as present in the DLC (fully clothed, upper body naked, lower body naked etc.)
+- The model for covenant NPC Nito will now match the model for whoever is the boss in Tomb of the Giants.
 
 Lava-Proof enemy handling & Moonlight Butterfly changes can be toggled from inside the UI (Even More Options tab)
 
