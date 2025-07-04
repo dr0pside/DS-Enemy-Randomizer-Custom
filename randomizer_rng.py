@@ -1751,7 +1751,7 @@ class Randomizer:
                                 try:
                                     self.msbio.parts[2].rows[rowIndex][MODEL_DATA_COL] = nitoModel
                                 except:
-                                    self.msbio.parts[2].rows[rowIndex][MODEL_DATA_COL] = self.msbio.parts[2].rows[rowIndex][MODEL_DATA_COL] #skip over if nito is not replacced
+                                    self.msbio.parts[2].rows[rowIndex][MODEL_DATA_COL] = 115 #add nito model to npc if boss nito is not replacced
                  
                             nitoskellyIDs = ['c2900_0000', 'c2900_0001', 'c2900_0002', 'c2910_0019', 'c2910_0020', 'c2910_0021']
 
