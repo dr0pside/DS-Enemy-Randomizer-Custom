@@ -1508,9 +1508,11 @@ class Randomizer:
                         newPos = (-440.52, -411.72, 15.16)
                         newRot = (0.00, -144.53, 0.00)
                     elif (inFile == "m15_00_00_00" and "c2320_0000" in creatureId):     # Iron Golem
-                        changePos = True
-                        newPos = (107.14, 83.00, 255.00)
-                        newRot = (0.00, 90.00, 0.00)
+                        toMove = ["c5210", "c5220"] # Nito, Sif
+                        if self.validNew[newChar][NewCol.ID.value] in toMove:
+                            changePos = True
+                            newPos = (107.14, 83.00, 255.00)
+                            newRot = (0.00, 90.00, 0.00)
                     elif ("c5401_0000" in creatureId):          # BoC Parasite
                         changePos = True
                         newPos = (548.65, -437.23, 416.95)
