@@ -221,9 +221,13 @@ class Randomizer:
         self.currentBosses = []
         self.spawnNPCS = False
         self.easyAsylum = False
-        
+
         self.BadComboGarg = 0
+        self.BadComboGarg1 = ""
+        self.BadcomboGarg2 = ""
         self.BadComboOS = 0
+        self.BadComboSmough = ""
+        self.BadComboOrnstein = ""
 
         self.missingMSB = 0
         self.missingLUABND = 0
@@ -1105,6 +1109,46 @@ class Randomizer:
             with open(paramPath, 'wb') as f:
                 f.write(content)
 
+    def applyLavaProof(self):
+        """
+        Applies a separate LavaProof param to all enemies in lava that makes them immune to lava.
+        """
+        paramPath = self.GAMEPARAM_PATH
+
+        if (self.useDCX):
+            paramPath = self.GAMEPARAM_PATH_REMASTERED
+
+        paramData = []
+        content = b''
+        dcxh = DCXHandler()
+
+        with open(paramPath, 'rb') as f:
+            content = f.read()
+
+        if (self.useDCX):
+            content = dcxh.open_dcx(content)
+
+        paramData = bndr.unpack_bnd(content)
+
+        np = NpcParam()
+        np.read(paramData[self.NPCPARAM_INDEX][2])
+        np.AddLavaProofParams()
+
+        nData = np.write()
+        np = NpcParam()
+        np.read(nData)
+        np.ApplyLavaProof()
+
+        paramData[self.NPCPARAM_INDEX] = (paramData[self.NPCPARAM_INDEX][0], paramData[self.NPCPARAM_INDEX][1],
+                                          np.write())
+
+        content = bndr.repack_bnd(paramData)
+        if (self.useDCX):
+            dcxh.save_dcx(paramPath, content)
+        else:
+            with open(paramPath, 'wb') as f:
+                f.write(content)
+
     def revertParam(self):
         """
         Revert NpcParam.param in param/GameParam/GameParam.parambnd
@@ -1322,7 +1366,7 @@ class Randomizer:
             disableRoamingBossRespawning = (respawningBosses == 1)
             self.spawnNPCS = (hostileNPC == 1)
             disableRespawningMosquitoes = (mosquitoReplacement == 0)
-            disableLavaProof = (lavaProof == 0)
+            enableLavaProof = (lavaProof == 1)
             disableMoonReplace = (moonReplace == 0)
             self.easyAsylum = (diffMode >= 3)
 
@@ -1400,6 +1444,10 @@ class Randomizer:
             self.applyBossSouls(bossSoulDrops, False)
             printLog("----", logFile)
 
+            printLog("Applying Lava Proof.", logFile)
+            self.applyLavaProof()
+            printLog("----", logFile)
+
             outRefFile.write("section version\n")
             outRefFile.write("randomizerVersion {0}\n".format(versionString))
             outRefFile.write("mode {0}\n".format('Remastered' if self.useDCX else 'PTDE'))
@@ -1475,7 +1523,7 @@ class Randomizer:
                     newPos = (0.00, 0.00, 0.00)
                     newRot = (0.00, 0.00, 0.00)
 
-                    # In addition to 'globaly' ignored enemies, certain specific enemies must be ignored or have things changed about them as well:
+                    # In addition to 'globally' ignored enemies, certain specific enemies must be ignored or have things changed about them as well:
                     specialCase = False
                     if (inFile == "m10_01_00_00" and "c2250" in creatureId):            #Taurus demon (Boss in burg) - special animation for jumping down
                         changePos = True
@@ -1507,12 +1555,6 @@ class Randomizer:
                         changePos = True
                         newPos = (-440.52, -411.72, 15.16)
                         newRot = (0.00, -144.53, 0.00)
-                    elif (inFile == "m15_00_00_00" and "c2320_0000" in creatureId):     # Iron Golem
-                        toMove = ["c5210", "c5220"] # Nito, Sif
-                        if self.validNew[newChar][NewCol.ID.value] in toMove:
-                            changePos = True
-                            newPos = (107.14, 83.00, 255.00)
-                            newRot = (0.00, 90.00, 0.00)
                     elif ("c5401_0000" in creatureId):          # BoC Parasite
                         changePos = True
                         newPos = (548.65, -437.23, 416.95)
@@ -1525,7 +1567,7 @@ class Randomizer:
                         changePos = True
                         newPos = (3.41, 197.61, -23.10)
                         newRot = (0.00, 180.0, 0.00)
-                    elif ("c5290_0000" in creatureId):                                       #Seath (Scripted death) - needs to be able to kill you in the forced death room 
+                    elif ("c5290_0000" in creatureId):                                  #Seath (Scripted death) - needs to be able to kill you in the forced death room
                         specialCase = True
                     elif (inFile == "m17_00_00_00" and "c2690_0000" in creatureId):     #Key Serpent - need the key (unless you dukeskip of course), new enemy either doesnt drop it
                         specialCase = True
@@ -1546,21 +1588,8 @@ class Randomizer:
                         specialCase = True
                     if (("c2910_0019" in creatureId or "c2910_0020" in creatureId or "c2910_0021" in creatureId) and inFile == "m13_01_00_00"):    # don't replace large skeletons in Ravelord Nito fight
                         specialCase = True
-                    if ("c2232" in creatureId and "c2232" in self.validNew[newChar][NewCol.ID.value]):
+                    if ("c2232" in creatureId and new_enemy_model_id == "c2232"):
                          changePos = False
-                    #Gargoyle bad combo flag:
-                    if (creatureId == "c5350_0000" and "c4100" in self.validNew[newChar][NewCol.ID.value]) and (creatureId == "c5350_0001" and "c3471" in self.validNew[newChar][NewCol.ID.value]): #Garg1 = Artorias, Garg2 = Sanctuary Guardian
-                        self.BadComboGarg = 1
-                    #O&S bad combo flag:
-                    if inFile == "m15_01_00_00" and creatureId in "c2360_0000" or creatureId in "c5270_0000":
-                        if (creatureId in "c2360_0000" and "c4500" in self.validNew[newChar][NewCol.ID.value]) and (creatureId in "c5270_0000" and "c4510" in self.validNew[newChar][NewCol.ID.value]): #Manus & Kalameet
-                            self.BadComboOS = 1
-                        elif (creatureId in "c2360_0000" and "c4510" in self.validNew[newChar][NewCol.ID.value]) and (creatureId in "c5270_0000" and "c4500" in self.validNew[newChar][NewCol.ID.value]): #ditto
-                            self.BadComboOS = 1
-                        elif (creatureId in "c2360_0000" and "c4500" in self.validNew[newChar][NewCol.ID.value]) and (creatureId in "c5270_0000" and "c5271" in self.validNew[newChar][NewCol.ID.value]): #Manus & Super Ornstein
-                            self.BadComboOS = 1
-                        elif (creatureId in "c2360_0000" and "c5271" in self.validNew[newChar][NewCol.ID.value]) and (creatureId in "c5270_0000" and "c4500" in self.validNew[newChar][NewCol.ID.value]): #ditto
-                            self.BadComboOS = 1
 
                     if (disableRespawningMosquitoes):
                         if (creatureId in ['c3090_0058', 'c3090_0059', 'c3090_0085', 'c3090_0086', 'c3090_0090', 'c3090_0091']):
@@ -1648,49 +1677,6 @@ class Randomizer:
                         else:
                             newChar = -2
 
-                #Lavaproof enemy logic
-                        centipederef = ['c5200_0000', 'c5201_0000', 'c5201_0001', 'c5201_0002', 'c5201_0003', 'c5201_0004', 'c5202_0000', 'c5202_0001', 'c5202_0002', 'c5202_0003', 'c5202_0004']
-
-                        if (lavaProof == 1):
-                            if (creatureId in self.lavapos):
-                                if (enemyMode == 1):
-                                    if (randint(1,100) <= replaceChance):
-                                        newChar = random.choice(self.lavabosses)
-                                    else:
-                                        newChar = -2
-                                if (enemyMode == 2):
-                                    if (randint(1,100) <= replaceChance):
-                                        newChar = random.choice(self.lavaenemies)
-                                    else:
-                                        newChar = -2
-                                if (enemyMode == 3):
-                                    if (randint(1,100) <= replaceChance):
-                                        if (randint(1,100) <= bossChance):
-                                            newChar = random.choice(self.lavabosses)
-                                        else:
-                                            newChar = random.choice(self.lavaenemies)
-                                    else:
-                                        newChar = -2
-                            if (creatureId in centipederef):
-                                if (bossMode == 1):
-                                    if (randint(1,100) <= replaceChance):
-                                        newChar = random.choice(self.lavabosses)
-                                    else:
-                                        newChar = -2
-                                if (bossMode == 2):
-                                    if (randint(1,100) <= replaceChance):
-                                        newChar = random.choice(self.lavaenemies)
-                                    else:
-                                        newChar = -2
-                                if (bossMode == 3):
-                                    if (randint(1,100) <= replaceChance):
-                                        if (randint(1,100) <= bossChance):
-                                            newChar = random.choice(self.lavabosses)
-                                        else:
-                                            newChar = random.choice(self.lavaenemies)
-                                    else:
-                                        newChar = -2
-
                         if (self.typeSub and creatureTypeId in self.typeReplaceMap and creatureType != "1"):
                             if (self.typeExceptBosses):
                                 if (self.validNew[newChar][NewCol.TYPE.value] != "1"):
@@ -1727,6 +1713,8 @@ class Randomizer:
                             paramValue = int(newParam)
                             if (creatureType == "0" and newChar in self.validNewBossIndices and (self.validNew[newChar][NewCol.ID.value] != 'c5351')):
                                 paramValue += 50
+                            if creatureId in self.lavapos and enableLavaProof == 1:
+                                paramValue += 70
 
                             self.msbio.parts[2].rows[rowIndex][PARAM_DATA_COL] = paramValue
                             aiStr = "  ai = <original>; param = " + newParam
@@ -1734,6 +1722,46 @@ class Randomizer:
                                 self.msbio.parts[2].rows[rowIndex][NPCAI_DATA_COL] = int(newAI)
                                 aiStr = " ai = " + newAI + "; param = " + str(paramValue)
                             self.msbio.parts[2].rows[rowIndex][MODEL_DATA_COL] = self.startIndices[i] + newChar
+
+                            new_enemy_model_id = self.msbio.parts[2].rows[rowIndex][MODEL_DATA_COL]
+
+                            # Flagging bad combos#:
+                            # Prepare vals:
+                            garg1 = "c5350_0000"
+                            garg2 = "c5350_0001"
+                            smough = "c2360_0000"
+                            ornstein = "c5270_0000"
+                            combo = (creatureId, new_enemy_model_id)
+
+                            # Gargoyle bad combo flag:
+                            if inFile == "m10_01_00_00":
+                                if combo == (garg1, "c4100"):  # c4100 = Artorias, c3471 = Sanctuary Guardian, c4500 = Manus,
+                                    self.BadComboGarg1 = "artorias"  # c4510 = Kalameet, c5271 = Super Ornstein
+
+                                if self.BadComboGarg1 == "artorias":
+                                    if combo == (garg2, "c3471"):
+                                        self.BadComboGarg = 1
+
+                            # O&S bad combo flag:
+                            if inFile == "m15_01_00_00":
+                                if combo == (smough, "c4500"):
+                                    self.BadComboSmough = "manus"
+                                if combo == (smough, "c4510"):
+                                    self.BadComboSmough = "kala"
+                                if combo == (smough, "c5271"):
+                                    self.BadComboSmough = "super_o"
+                                elif combo[0] == smough:
+                                    self.BadComboSmough = new_enemy_model_id
+
+                                if combo == (ornstein, "c4510"):
+                                    if self.BadComboSmough == "manus":
+                                        self.BadComboOS = 1
+                                if combo == (ornstein, "c4500"):
+                                    if self.BadComboSmough in ["kala", "super_o"]:
+                                        self.BadComboOS = 1
+                                if combo == (ornstein, "c5271"):
+                                    if self.BadComboSmough == "manus":
+                                        self.BadComboOS = 1
 
                             aiEntry = self.aic.GetEntryByAI(newAI)
 
@@ -2062,6 +2090,19 @@ class Randomizer:
                             if (inFile == "m12_00_00_00" and "c3230_0000" in creatureId and not "c3230" in self.validNew[newChar][NewCol.ID.value]):
                                 eventTools.ApplyMoonlightButterflyAnimFix()
 
+                            # Enemy specific pos changes:
+                            if (inFile == "m15_00_00_00" and "c2320_0000" in creatureId):  # Iron Golem
+                                toMove = ["c5210", "c5220"]  # Nito, Sif
+                                if self.validNew[newChar][NewCol.ID.value] in toMove:
+                                    changePos = True
+                                    newPos = (107.14, 83.00, 255.00)
+                                    newRot = (0.00, 90.00, 0.00)
+                            elif (inFile == "m18_00_00_00" and "c5370_0000" in creatureId):  # Gwyn
+                                if self.validNew[newChar][NewCol.ID.value] == "c5260":  # Gaping Dragon
+                                    changePos = True
+                                    newPos = (393.745, -116.855, 184.076)
+                                    newRot = (0.00, -60.00, 0.00)
+
                             self.WriteReferenceRow(outRefFile, self.msbio.parts[2].rows[rowIndex])
                             
                             printLog("Replacing (" + creatureId + ") " + self.validTargets[self.validIndex(creatureId)][1] + " with (" + self.validNew[newChar][NewCol.ID.value] + ") " + self.validNew[newChar][NewCol.NAME.value] + "[" + str(newChar) + "]" + aiStr + posLine + animLine, logFile, False)
@@ -2091,6 +2132,7 @@ class Randomizer:
 
                 printLog("---------------------", logFile)
                 outRefFile.write("levID {0}\n".format(currentEventEntityID))
+
                 i += 1
 
             self.copyDarkrootGarden()

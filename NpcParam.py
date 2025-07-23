@@ -1,4 +1,6 @@
+import all_params
 from paramclass import ParamClass
+from all_params import AllParams
 
 class NpcParam(ParamClass):
 
@@ -212,8 +214,8 @@ class NpcParam(ParamClass):
         333002
     ]
 
-    lavapos = ['c2250_0003', 'c2250_0004', 'c2250_0005', 'c2250_0006', 'c2250_0007', 'c2250_0008', 'c2250_0009', 'c3421_0000', 'c3421_0001', 'c3421_0002', 'c3421_0003', 'c3421_0004', 'c3421_0005', 'c3421_0006', 'c3421_0007', 'c3421_0008', 'c3421_0009', 'c3421_0010', 'c3421_0011', 'c3421_0012', 'c3421_0013', 'c3421_0014', 'c3421_0015', 'c3421_0016', 'c3421_0017', 'c3421_0018', 'c3421_0019', 'c3421_0020', 'c3421_0021', 'c3421_0022', 'c3421_0023', 'c3421_0024', 'c3421_0025', 'c3421_0026', 'c3421_0027', 'c3421_0028'] #good use of ai
-    
+    all_params = AllParams.copy()
+
     def ApplyBossSoulCount(self, soulPercentage:int):
         entryCount = len(self.data)
         expectedIndex = 0
@@ -243,7 +245,7 @@ class NpcParam(ParamClass):
                 break
 
         if (not hasEntries):
-            print("Custom NpcParam entries not found, adding.")
+            print("Custom Boss NpcParam entries not found, adding.")
             toAddList = []
             expectedIndex = 0;
             for i in range(entryCount):
@@ -262,11 +264,35 @@ class NpcParam(ParamClass):
         for i in range(entryCount):
             if (self.param.Rows[i].id in self.ToRemoveItemLots):
                 self.data[i]['normal']['itemLotId_1'] = -1
-                
-    def ApplyLavaProof(self): #not used
+
+    def ApplyLavaProof(self):
         entryCount = len(self.data)
         expectedIndex = 0
         for i in range(entryCount):
-            if (self.param.Rows[i]):
+            if (expectedIndex < len(all_params.AllParams)):
+                if self.param.Rows[i].id == all_params.AllParams[expectedIndex][0] + 70:
                     self.data[i]['normal']['spEffectID5'] = 5152
                     expectedIndex += 1
+
+    def AddLavaProofParams(self):
+        entryCount = len(self.data)
+        hasEntries = False
+        for row in self.param.Rows:
+            if (row.id == 120070):
+                hasEntries = True
+                break
+
+        if (not hasEntries):
+            print("Custom lavaproof NpcParam entries not found, adding.")
+            AddLavaList = []
+            expectedIndex = 0;
+            for i in range(entryCount):
+                if (expectedIndex < len(all_params.AllParams)):
+                    if (self.param.Rows[i].id == all_params.AllParams[expectedIndex][0]):
+                        entry = self.data[i]
+                        AddLavaList.append((self.param.Rows[i].id, entry, all_params.AllParams[expectedIndex][1]))
+                        expectedIndex += 1;
+                else:
+                    break
+            for rowIdx, rowData, Name in AddLavaList:
+                self.addEntry(rowIdx + 70, Name + " lavaproof", rowData)
