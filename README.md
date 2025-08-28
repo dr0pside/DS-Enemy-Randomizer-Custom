@@ -1,7 +1,7 @@
 # Dark Souls Enemy Randomizer 0.4.4
 
 Update of the original DS1 Enemy Randomizer to change some things and overall make it harder.
-(I only started learning Python in May 2025 so please don't clown on me too hard for all the hardcoding)
+(I only started learning Python recently so please don't clown on me too hard for all the hardcoding)
 
 BUGS FIXED:
 - Seath cannot replace Nito or Firesage Demon anymore (gets stuck in the ceiling and is only barely killable via ranged attacks)
